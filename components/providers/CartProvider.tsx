@@ -2,13 +2,12 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { getItem, unitPrice } from "@/lib/menu";
+import { getItem, unitPrice, type Selections } from "@/lib/menu";
 
 export type CartLine = {
   key: string;
   itemId: string;
-  size?: string;
-  sauces: string[];
+  selections: Selections;
   qty: number;
   notes?: string;
 };
@@ -30,15 +29,19 @@ type CartCtx = {
 };
 
 const Ctx = createContext<CartCtx | null>(null);
-const STORAGE_KEY = "sfr-cart-v1";
+const STORAGE_KEY = "sfr-cart-v2";
 
 export function lineKey(l: Omit<CartLine, "key" | "qty">) {
-  return [l.itemId, l.size ?? "", [...l.sauces].sort().join("+"), (l.notes ?? "").trim()].join("|");
+  const sel = Object.keys(l.selections)
+    .sort()
+    .map((k) => `${k}=${[...l.selections[k]].sort().join("+")}`)
+    .join(";");
+  return [l.itemId, sel, (l.notes ?? "").trim()].join("|");
 }
 
 export function linePrice(l: CartLine) {
   const item = getItem(l.itemId);
-  return item ? unitPrice(item, l.size, l.sauces) * l.qty : 0;
+  return item ? unitPrice(item, l.selections) * l.qty : 0;
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -55,7 +58,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as CartLine[];
-        setLines(parsed.filter((l) => getItem(l.itemId)));
+        setLines(parsed.filter((l) => getItem(l.itemId) && l.selections));
       }
     } catch {}
     setHydrated(true);

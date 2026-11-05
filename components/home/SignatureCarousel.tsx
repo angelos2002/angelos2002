@@ -7,7 +7,7 @@ import { useI18n } from "@/components/providers/I18nProvider";
 import { Icon } from "@/components/ui/Icon";
 import { Photo } from "@/components/ui/Photo";
 import { tr } from "@/lib/i18n";
-import { basePrice, formatPrice, menu } from "@/lib/menu";
+import { basePrice, hasVariants, formatPrice, menu } from "@/lib/menu";
 
 export function SignatureCarousel() {
   const { lang, t } = useI18n();
@@ -62,10 +62,10 @@ export function SignatureCarousel() {
               )}
               <div className="relative -mt-14 p-5">
                 <h3 className="heading text-3xl">{tr(item.name, lang)}</h3>
-                <p className="mt-2 line-clamp-2 text-sm text-cream-muted">{tr(item.description, lang)}</p>
+                <p className="mt-2 line-clamp-2 min-h-[2.5rem] text-sm text-cream-muted">{tr(item.description, lang)}</p>
                 <div className="mt-4 flex items-center justify-between">
                   <span className="text-sm text-cream-dim">
-                    {item.prices ? `${t.menu.from} ` : ""}
+                    {hasVariants(item) ? `${t.menu.from} ` : ""}
                     <span className="font-display text-2xl font-bold text-cream">{formatPrice(basePrice(item), lang)}</span>
                   </span>
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-flame text-ink shadow-glow-sm transition group-hover:scale-110">

@@ -64,14 +64,14 @@ export function Sheet({
             exit={{ opacity: 0 }}
             onClick={onClose}
           />
-          <div className={`absolute inset-x-0 bottom-0 flex max-h-[92vh] flex-col ${desktop}`}>
+          <div className={`absolute inset-x-0 bottom-0 flex h-auto max-h-[92dvh] flex-col ${desktop}`}>
             <motion.div
               ref={panel}
               role="dialog"
               aria-modal="true"
               aria-label={title}
               tabIndex={-1}
-              className="glass-strong flex max-h-full flex-1 flex-col overflow-clip rounded-b-none rounded-t-3xl outline-none md:rounded-[inherit]"
+              className="glass-strong flex max-h-full min-h-0 flex-1 flex-col overflow-hidden rounded-b-none rounded-t-3xl outline-none md:rounded-[inherit]"
               initial={{ y: side === "right" ? 0 : 60, x: side === "right" ? 40 : 0, opacity: 0 }}
               animate={{ y: 0, x: 0, opacity: 1 }}
               exit={{ y: side === "right" ? 0 : 60, x: side === "right" ? 40 : 0, opacity: 0 }}
@@ -84,7 +84,7 @@ export function Sheet({
                   <Icon name="x" />
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5">{children}</div>
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-5">{children}</div>
               {footer && <div className="border-t border-white/5 bg-ink-800/90 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">{footer}</div>}
             </motion.div>
           </div>

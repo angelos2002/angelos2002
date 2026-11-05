@@ -11,7 +11,7 @@ import { AnimatedPrice } from "@/components/ui/AnimatedPrice";
 import { Icon } from "@/components/ui/Icon";
 import { Photo } from "@/components/ui/Photo";
 import { tr } from "@/lib/i18n";
-import { basePrice, DIETARY, formatPrice, getItem, menu, type Dietary, type MenuItem } from "@/lib/menu";
+import { basePrice, hasVariants, DIETARY, formatPrice, getItem, menu, type Dietary, type MenuItem } from "@/lib/menu";
 import { AllergenIcons, DietaryBadges, dietIcon } from "./DietaryIcons";
 import { ItemSheet } from "./ItemSheet";
 
@@ -32,14 +32,14 @@ function ItemCard({ item, onOpen }: { item: MenuItem; onOpen: (i: MenuItem) => v
             <span className="font-display text-xl font-bold uppercase leading-tight">{tr(item.name, lang)}</span>
             {item.badge && <span className="shrink-0 rounded-full bg-flame/15 px-2 py-0.5 text-[10px] font-bold uppercase text-flame">{tr(item.badge, lang)}</span>}
           </span>
-          <span className="mt-1 line-clamp-2 text-sm text-cream-dim">{tr(item.description, lang)}</span>
+          {tr(item.description, lang) && <span className="mt-1 line-clamp-2 text-sm text-cream-dim">{tr(item.description, lang)}</span>}
           <span className="mt-2 flex flex-wrap gap-1.5">
             <DietaryBadges items={item.dietary} />
             <AllergenIcons items={item.allergens} />
           </span>
           <span className="mt-auto flex items-center justify-between pt-2">
             <span className="text-sm text-cream-dim">
-              {item.prices ? `${t.menu.from} ` : ""}
+              {hasVariants(item) ? `${t.menu.from} ` : ""}
               <span className="font-semibold text-cream">{formatPrice(basePrice(item), lang)}</span>
             </span>
             <span className="grid h-9 w-9 place-items-center rounded-full bg-flame text-ink shadow-glow-sm transition group-hover:scale-110" aria-hidden>
@@ -64,7 +64,7 @@ export function MenuBrowser() {
   const tabsRef = useRef<HTMLDivElement>(null);
   const clickScrolling = useRef(false);
 
-  // Deep link: /menu?item=rey-classic
+  // Deep link: /menu?item=limassol-burger
   useEffect(() => {
     const id = params.get("item");
     const item = id ? getItem(id) : undefined;

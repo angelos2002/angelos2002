@@ -1,206 +1,2668 @@
 {
-  "_note": "SAMPLE MENU — replace with the real menu. All text is { el, en }. Prices in EUR. Items with a 'prices' object get the size picker (keys must match optionGroups.size choices). Items with 'options' containing 'sauces' get the sauce picker. Allergen keys: gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites. Dietary keys: vegetarian, vegan, spicy, glutenFreeOption.",
-  "currency": "EUR",
-  "categories": [
-    { "id": "beef", "name": { "el": "Μοσχάρι", "en": "Beef" } },
-    { "id": "wagyu", "name": { "el": "Wagyu", "en": "Wagyu" } },
-    { "id": "chicken", "name": { "el": "Κοτόπουλο", "en": "Chicken" } },
-    { "id": "veggie", "name": { "el": "Veggie", "en": "Veggie" } },
-    { "id": "hotdogs", "name": { "el": "Hot dogs", "en": "Hot dogs" } },
-    { "id": "sauces", "name": { "el": "Σάλτσες", "en": "Sauces" } },
-    { "id": "sides", "name": { "el": "Συνοδευτικά", "en": "Sides" } },
-    { "id": "kids", "name": { "el": "Παιδικά", "en": "Kids" } },
-    { "id": "salads", "name": { "el": "Σαλάτες", "en": "Salads" } },
-    { "id": "desserts", "name": { "el": "Επιδόρπια", "en": "Desserts" } },
-    { "id": "drinks", "name": { "el": "Ποτά", "en": "Drinks" } }
-  ],
-  "optionGroups": {
-    "size": {
-      "type": "single",
-      "name": { "el": "Μέγεθος", "en": "Size" },
-      "choices": [
-        { "id": "180g", "name": { "el": "180g", "en": "180g" }, "note": { "el": "Ένα μπιφτέκι", "en": "Single patty" } },
-        { "id": "double", "name": { "el": "Double", "en": "Double" }, "note": { "el": "2 × 180g", "en": "2 × 180g" } },
-        { "id": "angus", "name": { "el": "Black Angus", "en": "Black Angus" }, "note": { "el": "Premium Black Angus 200g", "en": "Premium Black Angus 200g" } }
-      ]
-    },
-    "sauces": {
-      "type": "multi",
-      "max": 3,
-      "name": { "el": "Σάλτσες", "en": "Sauces" },
-      "choices": [
-        { "id": "rey", "name": { "el": "Rey sauce", "en": "Rey sauce" }, "price": 0 },
-        { "id": "smoky-bbq", "name": { "el": "Smoky BBQ", "en": "Smoky BBQ" }, "price": 0 },
-        { "id": "garlic-aioli", "name": { "el": "Αϊόλι σκόρδου", "en": "Garlic aioli" }, "price": 0.5 },
-        { "id": "truffle-mayo", "name": { "el": "Μαγιονέζα τρούφας", "en": "Truffle mayo" }, "price": 1 },
-        { "id": "chipotle", "name": { "el": "Chipotle", "en": "Chipotle" }, "price": 0.5 },
-        { "id": "honey-mustard", "name": { "el": "Μέλι-μουστάρδα", "en": "Honey mustard" }, "price": 0.5 }
-      ]
-    }
+ "_note": "Menu & prices from the old streetfoodrey.com order page (Nov 2026). Descriptions left empty where the old site's text wasn't captured. ALLERGENS ARE NOT FILLED IN — add them per item (keys: gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites). Photos are placeholders. Prices in EUR; option prices are added to the item price. 'remove' lists free 'No …' choices.",
+ "currency": "EUR",
+ "categories": [
+  {
+   "id": "beef",
+   "name": {
+    "el": "Μοσχαρίσια burgers",
+    "en": "Beef burgers"
+   }
   },
-  "items": [
+  {
+   "id": "wagyu",
+   "name": {
+    "el": "Wagyu",
+    "en": "Wagyu"
+   }
+  },
+  {
+   "id": "chicken",
+   "name": {
+    "el": "Κοτόπουλο",
+    "en": "Chicken"
+   }
+  },
+  {
+   "id": "veggie",
+   "name": {
+    "el": "Veggie",
+    "en": "Veggie"
+   }
+  },
+  {
+   "id": "hotdogs",
+   "name": {
+    "el": "Hot dogs",
+    "en": "Hot dogs"
+   }
+  },
+  {
+   "id": "sauces",
+   "name": {
+    "el": "Σάλτσες Rey",
+    "en": "Rey sauces"
+   }
+  },
+  {
+   "id": "sides",
+   "name": {
+    "el": "Συνοδευτικά",
+    "en": "Sides"
+   }
+  },
+  {
+   "id": "kids",
+   "name": {
+    "el": "Παιδικά",
+    "en": "Kids"
+   }
+  },
+  {
+   "id": "salads",
+   "name": {
+    "el": "Σαλάτες",
+    "en": "Salads"
+   }
+  },
+  {
+   "id": "desserts",
+   "name": {
+    "el": "Επιδόρπια",
+    "en": "Desserts"
+   }
+  },
+  {
+   "id": "drinks",
+   "name": {
+    "el": "Ποτά",
+    "en": "Drinks"
+   }
+  }
+ ],
+ "optionGroups": {
+  "beefSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
     {
-      "id": "rey-classic",
-      "category": "beef",
-      "signature": true,
-      "name": { "el": "Rey Classic", "en": "Rey Classic" },
-      "description": { "el": "Μοσχαρίσιο μπιφτέκι, cheddar, μαρούλι, ντομάτα, κρεμμύδι, πίκλες, Rey sauce, brioche.", "en": "Beef patty, cheddar, lettuce, tomato, onion, pickles, Rey sauce, brioche bun." },
-      "prices": { "180g": 9.5, "double": 12.5, "angus": 13.9 },
-      "options": ["size", "sauces"],
-      "dietary": [],
-      "allergens": ["gluten", "milk", "egg", "mustard", "sesame"],
-      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+     "id": "180g",
+     "name": {
+      "el": "180g",
+      "en": "180g"
+     },
+     "default": true
     },
     {
-      "id": "smoke-king",
-      "category": "beef",
-      "signature": true,
-      "badge": { "el": "Best seller", "en": "Best seller" },
-      "name": { "el": "Smoke King", "en": "Smoke King" },
-      "description": { "el": "Μπέικον, καπνιστό gouda, καραμελωμένα κρεμμύδια, smoky BBQ.", "en": "Bacon, smoked gouda, caramelised onions, smoky BBQ." },
-      "prices": { "180g": 11, "double": 14, "angus": 15.4 },
-      "options": ["size", "sauces"],
-      "dietary": [],
-      "allergens": ["gluten", "milk", "egg", "mustard", "sesame", "sulphites"],
-      "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+     "id": "double",
+     "name": {
+      "el": "Double up (2 × 180g)",
+      "en": "Double up (2 × 180g)"
+     },
+     "price": 2.5
     },
     {
-      "id": "inferno",
-      "category": "beef",
-      "name": { "el": "Inferno", "en": "Inferno" },
-      "description": { "el": "Jalapeños, pepper jack, τσίλι μαρμελάδα, chipotle mayo.", "en": "Jalapeños, pepper jack, chilli jam, chipotle mayo." },
-      "prices": { "180g": 10.5, "double": 13.5, "angus": 14.9 },
-      "options": ["size", "sauces"],
-      "dietary": ["spicy"],
-      "allergens": ["gluten", "milk", "egg", "mustard", "sesame"],
-      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80"
-    },
-    {
-      "id": "wagyu-truffle",
-      "category": "wagyu",
-      "signature": true,
-      "badge": { "el": "Premium", "en": "Premium" },
-      "name": { "el": "Wagyu Truffle", "en": "Wagyu Truffle" },
-      "description": { "el": "Wagyu μπιφτέκι, μανιτάρια, gruyère, μαγιονέζα τρούφας.", "en": "Wagyu patty, sautéed mushrooms, gruyère, truffle mayo." },
-      "price": 18.5,
-      "options": ["sauces"],
-      "dietary": [],
-      "allergens": ["gluten", "milk", "egg", "mustard", "sesame"],
-      "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80"
-    },
-    {
-      "id": "crispy-rey",
-      "category": "chicken",
-      "signature": true,
-      "name": { "el": "Crispy Rey Chicken", "en": "Crispy Rey Chicken" },
-      "description": { "el": "Τραγανό φιλέτο κοτόπουλο buttermilk, coleslaw, πίκλες, μέλι-μουστάρδα.", "en": "Buttermilk fried chicken, slaw, pickles, honey mustard." },
-      "price": 10,
-      "options": ["sauces"],
-      "dietary": [],
-      "allergens": ["gluten", "milk", "egg", "mustard"],
-      "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
-    },
-    {
-      "id": "garden-smash",
-      "category": "veggie",
-      "name": { "el": "Garden Smash", "en": "Garden Smash" },
-      "description": { "el": "Φυτικό μπιφτέκι, vegan cheddar, ντομάτα, μαρούλι, vegan mayo.", "en": "Plant-based patty, vegan cheddar, tomato, lettuce, vegan mayo." },
-      "price": 11,
-      "options": ["sauces"],
-      "dietary": ["vegetarian", "vegan"],
-      "allergens": ["gluten", "soy", "mustard"],
-      "image": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=900&q=80"
-    },
-    {
-      "id": "rey-dog",
-      "category": "hotdogs",
-      "name": { "el": "Rey Dog", "en": "Rey Dog" },
-      "description": { "el": "Λουκάνικο μοσχαρίσιο, τραγανό κρεμμύδι, μουστάρδα, κέτσαπ.", "en": "Beef frank, crispy onions, mustard, ketchup." },
-      "price": 7.5,
-      "options": ["sauces"],
-      "dietary": [],
-      "allergens": ["gluten", "mustard", "sulphites"],
-      "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=900&q=80"
-    },
-    {
-      "id": "sauce-rey",
-      "category": "sauces",
-      "name": { "el": "Rey sauce (dip)", "en": "Rey sauce (dip)" },
-      "description": { "el": "Η μυστική μας σάλτσα.", "en": "Our secret house sauce." },
-      "price": 1,
-      "dietary": ["vegetarian"],
-      "allergens": ["egg", "mustard"],
-      "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
-    },
-    {
-      "id": "fries",
-      "category": "sides",
-      "name": { "el": "Πατάτες", "en": "Fries" },
-      "description": { "el": "Φρέσκιες πατάτες, θαλασσινό αλάτι.", "en": "Hand-cut fries, sea salt." },
-      "price": 3.5,
-      "dietary": ["vegan", "vegetarian", "glutenFreeOption"],
-      "allergens": [],
-      "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80"
-    },
-    {
-      "id": "truffle-fries",
-      "category": "sides",
-      "name": { "el": "Πατάτες τρούφας", "en": "Truffle fries" },
-      "description": { "el": "Λάδι τρούφας, παρμεζάνα, μαϊντανός.", "en": "Truffle oil, parmesan, parsley." },
-      "price": 5.5,
-      "dietary": ["vegetarian"],
-      "allergens": ["milk"],
-      "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
-    },
-    {
-      "id": "kids-burger",
-      "category": "kids",
-      "name": { "el": "Mini Rey + πατάτες", "en": "Mini Rey + fries" },
-      "description": { "el": "Μικρό burger με cheddar, πατάτες και χυμό.", "en": "Small cheeseburger with fries and a juice." },
-      "price": 8,
-      "dietary": [],
-      "allergens": ["gluten", "milk", "sesame"],
-      "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80"
-    },
-    {
-      "id": "caesar",
-      "category": "salads",
-      "name": { "el": "Caesar με κοτόπουλο", "en": "Chicken Caesar" },
-      "description": { "el": "Ρομάνα, κοτόπουλο σχάρας, κρουτόν, παρμεζάνα, σως Caesar.", "en": "Romaine, grilled chicken, croutons, parmesan, Caesar dressing." },
-      "price": 9.5,
-      "dietary": [],
-      "allergens": ["gluten", "milk", "egg", "fish", "mustard"],
-      "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=900&q=80"
-    },
-    {
-      "id": "brownie",
-      "category": "desserts",
-      "name": { "el": "Brownie σοκολάτας", "en": "Chocolate brownie" },
-      "description": { "el": "Ζεστό brownie με σάλτσα καραμέλας.", "en": "Warm brownie with salted caramel." },
-      "price": 5,
-      "dietary": ["vegetarian"],
-      "allergens": ["gluten", "milk", "egg", "nuts"],
-      "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
-    },
-    {
-      "id": "shake",
-      "category": "drinks",
-      "name": { "el": "Milkshake βανίλια", "en": "Vanilla milkshake" },
-      "description": { "el": "Παγωτό βανίλια Μαδαγασκάρης.", "en": "Madagascar vanilla ice cream." },
-      "price": 5.5,
-      "dietary": ["vegetarian"],
-      "allergens": ["milk"],
-      "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=900&q=80"
-    },
-    {
-      "id": "cola",
-      "category": "drinks",
-      "name": { "el": "Αναψυκτικό 330ml", "en": "Soft drink 330ml" },
-      "description": { "el": "Cola, Cola Zero, Sprite, Fanta.", "en": "Cola, Cola Zero, Sprite, Fanta." },
-      "price": 2,
-      "dietary": ["vegan", "vegetarian"],
-      "allergens": [],
-      "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+     "id": "angus",
+     "name": {
+      "el": "Black Angus (2 × 100g)",
+      "en": "Black Angus (2 × 100g)"
+     },
+     "price": 3.5
     }
-  ]
+   ]
+  },
+  "cookBeef": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Ψήσιμο",
+    "en": "Cooking preference"
+   },
+   "choices": [
+    {
+     "id": "medium",
+     "name": {
+      "el": "Medium",
+      "en": "Medium"
+     }
+    },
+    {
+     "id": "medium-well",
+     "name": {
+      "el": "Medium to well",
+      "en": "Medium to well"
+     },
+     "default": true
+    },
+    {
+     "id": "well-done",
+     "name": {
+      "el": "Well done",
+      "en": "Well done"
+     }
+    }
+   ]
+  },
+  "cookWagyu": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Ψήσιμο",
+    "en": "Cooking preference"
+   },
+   "choices": [
+    {
+     "id": "rare",
+     "name": {
+      "el": "Rare",
+      "en": "Rare"
+     }
+    },
+    {
+     "id": "medium-rare",
+     "name": {
+      "el": "Medium rare",
+      "en": "Medium rare"
+     }
+    },
+    {
+     "id": "medium",
+     "name": {
+      "el": "Medium",
+      "en": "Medium"
+     },
+     "default": true
+    },
+    {
+     "id": "medium-well",
+     "name": {
+      "el": "Medium to well",
+      "en": "Medium to well"
+     }
+    },
+    {
+     "id": "well-done",
+     "name": {
+      "el": "Well done",
+      "en": "Well done"
+     }
+    }
+   ]
+  },
+  "beefAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "halloumi",
+     "name": {
+      "el": "Χαλλούμι",
+      "en": "Halloumi cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "egg",
+     "name": {
+      "el": "Αυγό",
+      "en": "Egg"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "extra-beef",
+     "name": {
+      "el": "Extra μπιφτέκι 180g",
+      "en": "Extra beef 180g"
+     },
+     "price": 4.8
+    }
+   ]
+  },
+  "sauceBeef": {
+   "type": "single",
+   "name": {
+    "el": "Σάλτσα",
+    "en": "Sauce"
+   },
+   "choices": [
+    {
+     "id": "none",
+     "name": {
+      "el": "Χωρίς σάλτσα",
+      "en": "No sauce"
+     },
+     "default": true
+    },
+    {
+     "id": "jd",
+     "name": {
+      "el": "Σάλτσα Jack Daniel's",
+      "en": "Jack Daniel's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     },
+     "price": 1
+    },
+    {
+     "id": "burger",
+     "name": {
+      "el": "Σάλτσα Burger",
+      "en": "Burger sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     },
+     "price": 1
+    },
+    {
+     "id": "philadelphia",
+     "name": {
+      "el": "Σάλτσα Philadelphia",
+      "en": "Philadelphia sauce"
+     },
+     "price": 2
+    },
+    {
+     "id": "mustard",
+     "name": {
+      "el": "Μουστάρδα",
+      "en": "Mustard"
+     }
+    },
+    {
+     "id": "ketchup",
+     "name": {
+      "el": "Κέτσαπ",
+      "en": "Ketchup"
+     }
+    },
+    {
+     "id": "mayo",
+     "name": {
+      "el": "Μαγιονέζα",
+      "en": "Mayonnaise"
+     }
+    },
+    {
+     "id": "ketchup-mayo",
+     "name": {
+      "el": "Κέτσαπ & μαγιονέζα",
+      "en": "Ketchup & mayonnaise"
+     }
+    },
+    {
+     "id": "ketchup-mustard",
+     "name": {
+      "el": "Κέτσαπ & μουστάρδα",
+      "en": "Ketchup & mustard"
+     }
+    }
+   ]
+  },
+  "sauceExtra": {
+   "type": "multi",
+   "name": {
+    "el": "Πρόσθεσε σάλτσες",
+    "en": "Add sauces"
+   },
+   "choices": [
+    {
+     "id": "jd",
+     "name": {
+      "el": "Σάλτσα Jack Daniel's",
+      "en": "Jack Daniel's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "burger",
+     "name": {
+      "el": "Σάλτσα Burger",
+      "en": "Burger sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     },
+     "price": 0.8
+    }
+   ]
+  },
+  "wagyuAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "wagyu-patty",
+     "name": {
+      "el": "Μπιφτέκι Wagyu",
+      "en": "Wagyu beef patty"
+     },
+     "price": 14
+    },
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "fresh-onions",
+     "name": {
+      "el": "Φρέσκα κρεμμύδια",
+      "en": "Fresh onions"
+     }
+    }
+   ]
+  },
+  "wagyuPatty": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "wagyu-patty",
+     "name": {
+      "el": "Μπιφτέκι Wagyu",
+      "en": "Wagyu beef patty"
+     },
+     "price": 14
+    }
+   ]
+  },
+  "chickenSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
+    {
+     "id": "single",
+     "name": {
+      "el": "Single",
+      "en": "Single"
+     },
+     "default": true
+    },
+    {
+     "id": "double",
+     "name": {
+      "el": "Double up",
+      "en": "Double up"
+     },
+     "price": 2.5
+    }
+   ]
+  },
+  "texasSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
+    {
+     "id": "single",
+     "name": {
+      "el": "Single",
+      "en": "Single"
+     },
+     "default": true
+    },
+    {
+     "id": "double",
+     "name": {
+      "el": "Double up",
+      "en": "Double up"
+     },
+     "price": 2.2
+    }
+   ]
+  },
+  "chickenAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "extra-chicken",
+     "name": {
+      "el": "Extra κοτόπουλο",
+      "en": "Extra chicken"
+     },
+     "price": 2.5
+    }
+   ]
+  },
+  "texasSauce": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Σάλτσα",
+    "en": "Sauce"
+   },
+   "choices": [
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     },
+     "default": true
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "BBQ Chilli 🌶",
+      "en": "BBQ Chilli 🌶"
+     }
+    }
+   ]
+  },
+  "texasAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheese-combo",
+     "name": {
+      "el": "Cheese combo",
+      "en": "Cheese combo"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "veggieSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
+    {
+     "id": "single",
+     "name": {
+      "el": "Single",
+      "en": "Single"
+     },
+     "default": true
+    },
+    {
+     "id": "double",
+     "name": {
+      "el": "Double up",
+      "en": "Double up"
+     },
+     "price": 2
+    }
+   ]
+  },
+  "veggieSauces": {
+   "type": "multi",
+   "name": {
+    "el": "Πρόσθεσε σάλτσα",
+    "en": "Add sauce"
+   },
+   "choices": [
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     },
+     "price": 1
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "crispyOnions": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "crispy-onions",
+     "name": {
+      "el": "Τραγανά κρεμμύδια",
+      "en": "Crispy onions"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "beyondSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
+    {
+     "id": "single",
+     "name": {
+      "el": "Single",
+      "en": "Single"
+     },
+     "default": true
+    },
+    {
+     "id": "double",
+     "name": {
+      "el": "Double up",
+      "en": "Double up"
+     },
+     "price": 3
+    }
+   ]
+  },
+  "beyondAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "crispy-onions",
+     "name": {
+      "el": "Τραγανά κρεμμύδια",
+      "en": "Crispy onions"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "sauceChoice": {
+   "type": "single",
+   "name": {
+    "el": "Σάλτσα",
+    "en": "Sauce"
+   },
+   "choices": [
+    {
+     "id": "none",
+     "name": {
+      "el": "Χωρίς σάλτσα",
+      "en": "No sauce"
+     },
+     "default": true
+    },
+    {
+     "id": "jd",
+     "name": {
+      "el": "Σάλτσα Jack Daniel's",
+      "en": "Jack Daniel's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "burger",
+     "name": {
+      "el": "Σάλτσα Burger",
+      "en": "Burger sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "mustard",
+     "name": {
+      "el": "Μουστάρδα",
+      "en": "Mustard"
+     }
+    },
+    {
+     "id": "ketchup",
+     "name": {
+      "el": "Κέτσαπ",
+      "en": "Ketchup"
+     }
+    },
+    {
+     "id": "mayo",
+     "name": {
+      "el": "Μαγιονέζα",
+      "en": "Mayonnaise"
+     }
+    },
+    {
+     "id": "ketchup-mayo",
+     "name": {
+      "el": "Κέτσαπ & μαγιονέζα",
+      "en": "Ketchup & mayonnaise"
+     }
+    },
+    {
+     "id": "ketchup-mustard",
+     "name": {
+      "el": "Κέτσαπ & μουστάρδα",
+      "en": "Ketchup & mustard"
+     }
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     },
+     "price": 0.8
+    }
+   ]
+  },
+  "dogSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
+    {
+     "id": "single",
+     "name": {
+      "el": "Single",
+      "en": "Single"
+     },
+     "default": true
+    },
+    {
+     "id": "double",
+     "name": {
+      "el": "Double up",
+      "en": "Double up"
+     },
+     "price": 2.5
+    }
+   ]
+  },
+  "dogSauce": {
+   "type": "single",
+   "name": {
+    "el": "Σάλτσα",
+    "en": "Sauce"
+   },
+   "choices": [
+    {
+     "id": "none",
+     "name": {
+      "el": "Χωρίς σάλτσα",
+      "en": "No sauce"
+     },
+     "default": true
+    },
+    {
+     "id": "jd",
+     "name": {
+      "el": "Σάλτσα Jack Daniel's",
+      "en": "Jack Daniel's sauce"
+     }
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     }
+    },
+    {
+     "id": "burger",
+     "name": {
+      "el": "Σάλτσα Burger",
+      "en": "Burger sauce"
+     }
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     }
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     }
+    },
+    {
+     "id": "mustard",
+     "name": {
+      "el": "Μουστάρδα",
+      "en": "Mustard"
+     }
+    },
+    {
+     "id": "ketchup",
+     "name": {
+      "el": "Κέτσαπ",
+      "en": "Ketchup"
+     }
+    },
+    {
+     "id": "ketchup-mustard",
+     "name": {
+      "el": "Κέτσαπ & μουστάρδα",
+      "en": "Ketchup & mustard"
+     }
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     }
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     }
+    }
+   ]
+  },
+  "dogAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Πρόσθεσε",
+    "en": "Add"
+   },
+   "choices": [
+    {
+     "id": "pickles",
+     "name": {
+      "el": "Αγγουράκι τουρσί",
+      "en": "Pickles"
+     }
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Coleslaw",
+      "en": "Coleslaw"
+     },
+     "price": 1
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 1
+    },
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "crispy-onions",
+     "name": {
+      "el": "Τραγανά κρεμμύδια",
+      "en": "Crispy onions"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "stripsSauce": {
+   "type": "multi",
+   "name": {
+    "el": "Πρόσθεσε σάλτσα",
+    "en": "Add more sauce inside"
+   },
+   "choices": [
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     }
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     }
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "BBQ Chilli 🌶",
+      "en": "BBQ Chilli 🌶"
+     }
+    }
+   ]
+  },
+  "sideSauce": {
+   "type": "single",
+   "name": {
+    "el": "Σάλτσα στο πλάι",
+    "en": "Sauce on the side"
+   },
+   "choices": [
+    {
+     "id": "none",
+     "name": {
+      "el": "Χωρίς σάλτσα",
+      "en": "No sauce"
+     },
+     "default": true
+    },
+    {
+     "id": "jd",
+     "name": {
+      "el": "Σάλτσα Jack Daniel's",
+      "en": "Jack Daniel's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "burger",
+     "name": {
+      "el": "Σάλτσα Burger",
+      "en": "Burger sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "philadelphia",
+     "name": {
+      "el": "Σάλτσα Philadelphia",
+      "en": "Philadelphia sauce"
+     },
+     "price": 2
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     },
+     "price": 0.8
+    }
+   ]
+  },
+  "amsterdamProtein": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Διάλεξε",
+    "en": "Choose one"
+   },
+   "choices": [
+    {
+     "id": "beef",
+     "name": {
+      "el": "Με μοσχάρι",
+      "en": "With beef"
+     },
+     "default": true
+    },
+    {
+     "id": "chicken",
+     "name": {
+      "el": "Με κοτόπουλο",
+      "en": "With chicken"
+     }
+    }
+   ]
+  },
+  "amsterdamSauce": {
+   "type": "single",
+   "name": {
+    "el": "Σάλτσα",
+    "en": "Sauce"
+   },
+   "choices": [
+    {
+     "id": "none",
+     "name": {
+      "el": "Χωρίς σάλτσα",
+      "en": "No sauce"
+     },
+     "default": true
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     }
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     }
+    }
+   ]
+  },
+  "coleslawSize": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Μέγεθος",
+    "en": "Size"
+   },
+   "choices": [
+    {
+     "id": "small",
+     "name": {
+      "el": "Μικρή",
+      "en": "Small"
+     },
+     "default": true
+    },
+    {
+     "id": "large",
+     "name": {
+      "el": "Μεγάλη",
+      "en": "Large"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "kidsSalad": {
+   "type": "multi",
+   "name": {
+    "el": "Πρόσθεσε σαλάτα",
+    "en": "Add salad"
+   },
+   "choices": [
+    {
+     "id": "lettuce",
+     "name": {
+      "el": "Μαρούλι",
+      "en": "Lettuce"
+     }
+    },
+    {
+     "id": "tomato",
+     "name": {
+      "el": "Ντομάτα",
+      "en": "Tomato"
+     }
+    },
+    {
+     "id": "cucumber",
+     "name": {
+      "el": "Αγγούρι",
+      "en": "Cucumber"
+     }
+    },
+    {
+     "id": "pickles",
+     "name": {
+      "el": "Αγγουράκι τουρσί",
+      "en": "Pickles"
+     }
+    }
+   ]
+  },
+  "kidsAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "halloumi",
+     "name": {
+      "el": "Χαλλούμι",
+      "en": "Halloumi cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "egg",
+     "name": {
+      "el": "Αυγό",
+      "en": "Egg"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "crispy-onions",
+     "name": {
+      "el": "Τραγανά κρεμμύδια",
+      "en": "Crispy onions"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "kidsSauces": {
+   "type": "multi",
+   "name": {
+    "el": "Πρόσθεσε σάλτσες",
+    "en": "Add sauces"
+   },
+   "choices": [
+    {
+     "id": "jd",
+     "name": {
+      "el": "Σάλτσα Jack Daniel's",
+      "en": "Jack Daniel's sauce"
+     },
+     "price": 1
+    },
+    {
+     "id": "chef",
+     "name": {
+      "el": "Σάλτσα Chef",
+      "en": "Chef's sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bbq-chilli",
+     "name": {
+      "el": "Σάλτσα BBQ Chilli 🌶",
+      "en": "BBQ Chilli sauce 🌶"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "burger",
+     "name": {
+      "el": "Σάλτσα Burger",
+      "en": "Burger sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "honey-mustard",
+     "name": {
+      "el": "Σάλτσα μέλι-μουστάρδα",
+      "en": "Honey mustard sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "rey",
+     "name": {
+      "el": "Σάλτσα Rey",
+      "en": "Rey sauce"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "mustard",
+     "name": {
+      "el": "Μουστάρδα",
+      "en": "Mustard"
+     }
+    },
+    {
+     "id": "ketchup",
+     "name": {
+      "el": "Κέτσαπ",
+      "en": "Ketchup"
+     }
+    },
+    {
+     "id": "mayo",
+     "name": {
+      "el": "Μαγιονέζα",
+      "en": "Mayonnaise"
+     }
+    },
+    {
+     "id": "ketchup-mayo",
+     "name": {
+      "el": "Κέτσαπ & μαγιονέζα",
+      "en": "Ketchup & mayonnaise"
+     }
+    },
+    {
+     "id": "ketchup-mustard",
+     "name": {
+      "el": "Κέτσαπ & μουστάρδα",
+      "en": "Ketchup & mustard"
+     }
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     },
+     "price": 0.8
+    }
+   ]
+  }
+ },
+ "items": [
+  {
+   "id": "beef-burger",
+   "category": "beef",
+   "name": {
+    "el": "Beef Burger",
+    "en": "Beef Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 7,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons",
+    "sauceBeef"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+  },
+  {
+   "id": "cheeseburger",
+   "category": "beef",
+   "name": {
+    "el": "Cheeseburger",
+    "en": "Cheeseburger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 8,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons",
+    "sauceBeef"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+  },
+  {
+   "id": "bacon-cheeseburger",
+   "category": "beef",
+   "name": {
+    "el": "Bacon Cheeseburger",
+    "en": "Bacon Cheeseburger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 8.5,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons",
+    "sauceBeef"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80"
+  },
+  {
+   "id": "chefs-burger",
+   "category": "beef",
+   "name": {
+    "el": "Chef's Burger",
+    "en": "Chef's Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 8.5,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+  },
+  {
+   "id": "new-york-burger",
+   "category": "beef",
+   "name": {
+    "el": "New York's Burger",
+    "en": "New York's Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 8.5,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+  },
+  {
+   "id": "london-burger",
+   "category": "beef",
+   "name": {
+    "el": "London's Burger",
+    "en": "London's Burger"
+   },
+   "description": {
+    "el": "100% μοσχαρίσιο μπιφτέκι, τυρί cheddar, μπέικον, σάλτσα BBQ chili, μαρούλι, ντομάτα, τουρσί, κρεμμύδι",
+    "en": "100% beef burger, cheddar cheese, bacon, chili BBQ sauce, lettuce, tomato, pickles, onions"
+   },
+   "price": 8.5,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    },
+    {
+     "el": "Χωρίς σάλτσα BBQ chili",
+     "en": "No chili BBQ sauce"
+    },
+    {
+     "el": "Χωρίς κρεμμύδι",
+     "en": "No onions"
+    }
+   ],
+   "dietary": [
+    "spicy"
+   ],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80"
+  },
+  {
+   "id": "limassol-burger",
+   "category": "beef",
+   "name": {
+    "el": "Limassol Burger",
+    "en": "Limassol Burger"
+   },
+   "description": {
+    "el": "100% μοσχαρίσιο μπιφτέκι, τυρί cheddar, χαλλούμι, Rey sauce, μαρούλι, τουρσί, κρεμμύδι",
+    "en": "100% beef burger, cheddar cheese, halloumi cheese, Rey sauce, lettuce, pickles, onions"
+   },
+   "price": 8.5,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς χαλλούμι",
+     "en": "No halloumi"
+    },
+    {
+     "el": "Χωρίς Rey sauce",
+     "en": "No Rey sauce"
+    },
+    {
+     "el": "Χωρίς κρεμμύδι",
+     "en": "No onions"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80",
+   "signature": true,
+   "badge": {
+    "el": "Αγαπημένο της Λεμεσού",
+    "en": "Local favourite"
+   }
+  },
+  {
+   "id": "california-burger",
+   "category": "beef",
+   "name": {
+    "el": "California Burger",
+    "en": "California Burger"
+   },
+   "description": {
+    "el": "100% βοδινό μπιφτέκι Angus, τυρί τσένταρ, καραμελωμένο μπέικον, Burger σως, μαρούλι iceberg, ντομάτα, αγγουράκι τουρσί",
+    "en": "100% Angus beef patty, cheddar cheese, caramelised bacon, burger sauce, iceberg lettuce, tomato, pickles"
+   },
+   "price": 8.5,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς καραμελωμένο μπέικον",
+     "en": "No caramelised bacon"
+    },
+    {
+     "el": "Χωρίς burger sauce",
+     "en": "No burger sauce"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+  },
+  {
+   "id": "new-york-premium",
+   "category": "beef",
+   "name": {
+    "el": "New York's Premium Burger",
+    "en": "New York's Premium Burger"
+   },
+   "description": {
+    "el": "Μπιφτέκι Angus, τυρί cheddar, καραμελωμένα κρεμμύδια, μπέικον, σάλτσα Jack Daniel's, σπιτική σαλάτα coleslaw",
+    "en": "Angus beef burger, cheddar cheese, caramelised onions, bacon, Jack Daniel's sauce, homemade coleslaw salad"
+   },
+   "price": 10.9,
+   "options": [
+    "beefSize",
+    "cookBeef",
+    "beefAddons",
+    "sauceExtra"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    },
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμύδια",
+     "en": "No caramelised onions"
+    },
+    {
+     "el": "Χωρίς σάλτσα Jack Daniel's",
+     "en": "No Jack Daniel's sauce"
+    },
+    {
+     "el": "Χωρίς coleslaw",
+     "en": "No coleslaw"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80",
+   "signature": true,
+   "badge": {
+    "el": "Premium",
+    "en": "Premium"
+   }
+  },
+  {
+   "id": "portofino-burger",
+   "category": "beef",
+   "name": {
+    "el": "Portofino Burger",
+    "en": "Portofino Burger"
+   },
+   "description": {
+    "el": "Μπιφτέκι Black Angus, σοτέ μανιτάρια portobello με λάδι τρούφας, σπιτική σάλτσα τρούφας, παλαιωμένη παρμεζάνα και προβολόνε",
+    "en": "Black Angus beef burger, sautéed portobello mushrooms flavoured with truffle oil, homemade truffle sauce, slow-aged parmesan and provolone cheese"
+   },
+   "price": 14,
+   "options": [
+    "beefSize",
+    "cookBeef"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μανιτάρια portobello",
+     "en": "No portobello mushrooms"
+    },
+    {
+     "el": "Χωρίς σάλτσα τρούφας",
+     "en": "No truffle sauce"
+    },
+    {
+     "el": "Χωρίς παρμεζάνα",
+     "en": "No parmesan"
+    },
+    {
+     "el": "Χωρίς προβολόνε",
+     "en": "No provolone"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80",
+   "signature": true
+  },
+  {
+   "id": "dallas-burger",
+   "category": "beef",
+   "name": {
+    "el": "Dallas Burger",
+    "en": "Dallas Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 16,
+   "options": [
+    "cookBeef"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+  },
+  {
+   "id": "wagyu-burger",
+   "category": "wagyu",
+   "name": {
+    "el": "Wagyu Burger",
+    "en": "Wagyu Burger"
+   },
+   "description": {
+    "el": "Ιαπωνικό μπιφτέκι Wagyu (200g), κατσικίσιο τυρί, καραμελωμένα κρεμμύδια, φρέσκο κρεμμύδι, σάλτσα Jack Mayo",
+    "en": "Japanese Wagyu beef patty (200g), goat cheese, caramelised onions, fresh onions, Jack Mayo sauce"
+   },
+   "price": 25,
+   "options": [
+    "cookWagyu",
+    "wagyuAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμύδια",
+     "en": "No caramelised onions"
+    },
+    {
+     "el": "Χωρίς τυρί",
+     "en": "No cheese"
+    },
+    {
+     "el": "Χωρίς κρεμμύδι",
+     "en": "No onions"
+    },
+    {
+     "el": "Χωρίς σάλτσα Jack Mayo",
+     "en": "No Jack Mayo sauce"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80"
+  },
+  {
+   "id": "wagyu-truffle-burger",
+   "category": "wagyu",
+   "name": {
+    "el": "Wagyu Truffle Burger",
+    "en": "Wagyu Truffle Burger"
+   },
+   "description": {
+    "el": "Ιαπωνικό μπιφτέκι Wagyu 200g, κρέμα μανιταριών porcini με τρούφα, προβολόνε, παλαιωμένη παρμεζάνα, καραμελωμένα κρεμμυδάκια και σάλτσα τρούφας",
+    "en": "Japanese Wagyu beef patty 200g, porcini mushroom cream with truffle, provolone cheese, slow-aged parmesan, caramelised shallots and truffle sauce"
+   },
+   "price": 25,
+   "options": [
+    "cookWagyu",
+    "wagyuPatty"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς σάλτσα τρούφας",
+     "en": "No truffle sauce"
+    },
+    {
+     "el": "Χωρίς παρμεζάνα",
+     "en": "No parmesan"
+    },
+    {
+     "el": "Χωρίς προβολόνε",
+     "en": "No provolone"
+    },
+    {
+     "el": "Χωρίς κρέμα porcini τρούφας",
+     "en": "No porcini truffle cream"
+    },
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμυδάκια",
+     "en": "No caramelised shallots"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80",
+   "signature": true,
+   "badge": {
+    "el": "Wagyu",
+    "en": "Wagyu"
+   }
+  },
+  {
+   "id": "viennas-burger",
+   "category": "chicken",
+   "name": {
+    "el": "Vienna's Burger",
+    "en": "Vienna's Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 8.5,
+   "options": [
+    "chickenSize",
+    "chickenAddons"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+  },
+  {
+   "id": "viennas-premium",
+   "category": "chicken",
+   "name": {
+    "el": "Vienna's Premium Burger",
+    "en": "Vienna's Premium Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 10.9,
+   "options": [
+    "chickenAddons"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80",
+   "signature": true
+  },
+  {
+   "id": "texas-burger",
+   "category": "chicken",
+   "name": {
+    "el": "Texas Burger",
+    "en": "Texas Burger"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 10.9,
+   "options": [
+    "texasSize",
+    "texasSauce",
+    "texasAddons"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+  },
+  {
+   "id": "chicken-wrap",
+   "category": "chicken",
+   "name": {
+    "el": "Chicken Wrap",
+    "en": "Chicken Wrap"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 8,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+  },
+  {
+   "id": "veggie-burger",
+   "category": "veggie",
+   "name": {
+    "el": "Veggie Burger",
+    "en": "Veggie Burger"
+   },
+   "description": {
+    "el": "Μπιφτέκι λαχανικών, μαρούλι, ντομάτα, τουρσί",
+    "en": "Vegetable burger, lettuce, tomato, pickles"
+   },
+   "price": 7,
+   "options": [
+    "veggieSize",
+    "veggieSauces",
+    "crispyOnions"
+   ],
+   "dietary": [
+    "vegetarian"
+   ],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=900&q=80"
+  },
+  {
+   "id": "beyond-meat-burger",
+   "category": "veggie",
+   "name": {
+    "el": "Beyond Meat Burger",
+    "en": "Beyond Meat Burger"
+   },
+   "description": {
+    "el": "Φυτικό μπιφτέκι, μαρούλι, ντομάτα, τουρσί",
+    "en": "Plant-based burger, lettuce, tomato, pickles"
+   },
+   "price": 8,
+   "options": [
+    "beyondSize",
+    "beyondAddons",
+    "sauceChoice"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=900&q=80"
+  },
+  {
+   "id": "rey-dog",
+   "category": "hotdogs",
+   "name": {
+    "el": "Rey Dog",
+    "en": "Rey Dog"
+   },
+   "description": {
+    "el": "Μοσχαρίσιο hot dog με σάλτσα της επιλογής σου",
+    "en": "Beef hot dog with sauce of your choice"
+   },
+   "price": 6,
+   "options": [
+    "dogSize",
+    "dogSauce",
+    "dogAddons"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=900&q=80"
+  },
+  {
+   "id": "rey-double-dog",
+   "category": "hotdogs",
+   "name": {
+    "el": "Rey Double Dog",
+    "en": "Rey Double Dog"
+   },
+   "description": {
+    "el": "Διπλό μοσχαρίσιο hot dog με cheddar, καραμελωμένα κρεμμύδια, κέτσαπ, μουστάρδα, coleslaw",
+    "en": "Double beef hot dog with cheddar, caramelised onions, ketchup, mustard, coleslaw"
+   },
+   "price": 9.5,
+   "options": [
+    "dogAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμύδια",
+     "en": "No caramelised onions"
+    },
+    {
+     "el": "Χωρίς coleslaw",
+     "en": "No coleslaw"
+    },
+    {
+     "el": "Χωρίς κέτσαπ",
+     "en": "No ketchup"
+    },
+    {
+     "el": "Χωρίς μουστάρδα",
+     "en": "No mustard"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=900&q=80"
+  },
+  {
+   "id": "sauce-jd",
+   "category": "sauces",
+   "name": {
+    "el": "Jack Daniel's",
+    "en": "Jack Daniel's"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [
+    "vegetarian"
+   ],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sauce-chef",
+   "category": "sauces",
+   "name": {
+    "el": "Σάλτσα Chef",
+    "en": "Chef's Sauce"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sauce-bbq-chilli",
+   "category": "sauces",
+   "name": {
+    "el": "BBQ Chilli",
+    "en": "BBQ Chilli"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [
+    "spicy"
+   ],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sauce-burger",
+   "category": "sauces",
+   "name": {
+    "el": "Σάλτσα Burger",
+    "en": "Burger Sauce"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sauce-honey-mustard",
+   "category": "sauces",
+   "name": {
+    "el": "Μέλι-μουστάρδα",
+    "en": "Honey Mustard"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sauce-rey",
+   "category": "sauces",
+   "name": {
+    "el": "Rey Sauce",
+    "en": "Rey Sauce"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sachet-mayo",
+   "category": "sauces",
+   "name": {
+    "el": "Φακελάκι μαγιονέζα",
+    "en": "Mayonnaise sachet"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 0.3,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sachet-ketchup",
+   "category": "sauces",
+   "name": {
+    "el": "Φακελάκι κέτσαπ",
+    "en": "Ketchup sachet"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 0.3,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "sauce-bbq-classic",
+   "category": "sauces",
+   "name": {
+    "el": "BBQ Classic",
+    "en": "BBQ Classic"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+  },
+  {
+   "id": "rey-chicken-strips",
+   "category": "sides",
+   "name": {
+    "el": "REY Chicken Strips",
+    "en": "REY Chicken Strips"
+   },
+   "description": {
+    "el": "Λωρίδες κοτόπουλο με σπιτική σάλτσα Jack Daniel's και σουσάμι",
+    "en": "Chicken strips garnished with homemade Jack Daniel's sauce and sesame seeds"
+   },
+   "price": 5.5,
+   "options": [
+    "stripsSauce"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+  },
+  {
+   "id": "fries",
+   "category": "sides",
+   "name": {
+    "el": "Πατάτες (1 άτομο)",
+    "en": "Fries (1 person)"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 3,
+   "dietary": [
+    "vegetarian"
+   ],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80"
+  },
+  {
+   "id": "sweet-potatoes",
+   "category": "sides",
+   "name": {
+    "el": "Γλυκοπατάτες (1 άτομο)",
+    "en": "Sweet potatoes (1 person)"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 4,
+   "dietary": [
+    "vegetarian"
+   ],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80"
+  },
+  {
+   "id": "onion-rings",
+   "category": "sides",
+   "name": {
+    "el": "Onion Rings",
+    "en": "Onion Rings"
+   },
+   "description": {
+    "el": "12 τεμάχια",
+    "en": "12 pieces"
+   },
+   "price": 3.5,
+   "options": [
+    "sideSauce"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
+  },
+  {
+   "id": "cheese-rings",
+   "category": "sides",
+   "name": {
+    "el": "Cheese Rings",
+    "en": "Cheese Rings"
+   },
+   "description": {
+    "el": "6 τεμάχια",
+    "en": "6 pieces"
+   },
+   "price": 5.5,
+   "options": [
+    "sideSauce"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
+  },
+  {
+   "id": "amsterdam-potatoes",
+   "category": "sides",
+   "name": {
+    "el": "Amsterdam Potatoes",
+    "en": "Amsterdam Potatoes"
+   },
+   "description": {
+    "el": "Πατάτες με μοσχάρι ή κοτόπουλο, τυρί cheddar, μπέικον, σάλτσα της επιλογής σου",
+    "en": "Fries with beef or chicken, cheddar cheese, bacon, sauce of your choice"
+   },
+   "price": 7,
+   "options": [
+    "amsterdamProtein",
+    "amsterdamSauce"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
+  },
+  {
+   "id": "coleslaw-salad",
+   "category": "sides",
+   "name": {
+    "el": "Σαλάτα coleslaw",
+    "en": "Coleslaw salad"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2,
+   "options": [
+    "coleslawSize"
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=900&q=80"
+  },
+  {
+   "id": "chicken-nuggets",
+   "category": "kids",
+   "name": {
+    "el": "Chicken Nuggets",
+    "en": "Chicken Nuggets"
+   },
+   "description": {
+    "el": "8 κομμάτια chicken nuggets, σερβίρονται με πατάτες",
+    "en": "8 pieces chicken nuggets, served with fries"
+   },
+   "price": 7,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80"
+  },
+  {
+   "id": "krabby-patty-burger",
+   "category": "kids",
+   "name": {
+    "el": "Krabby Patty Burger",
+    "en": "Krabby Patty Burger"
+   },
+   "description": {
+    "el": "Μπιφτέκι 100g, τυρί, σερβίρεται με πατάτες",
+    "en": "100g beef burger, cheese, served with fries"
+   },
+   "price": 7,
+   "options": [
+    "kidsSalad",
+    "kidsAddons",
+    "kidsSauces"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80"
+  },
+  {
+   "id": "caesar-salad",
+   "category": "salads",
+   "name": {
+    "el": "Σαλάτα Caesar",
+    "en": "Caesar Salad"
+   },
+   "description": {
+    "el": "Μαρούλι iceberg, ντομάτα, κρουτόν, τραγανό κοτόπουλο, παρμεζάνα. Σερβίρεται με σάλτσα Caesar στο πλάι",
+    "en": "Iceberg lettuce, tomato, croutons, crispy chicken, parmesan cheese. Served with Caesar sauce on the side"
+   },
+   "price": 8.5,
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς κρουτόν",
+     "en": "No croutons"
+    },
+    {
+     "el": "Χωρίς σνίτσελ κοτόπουλο",
+     "en": "No chicken schnitzel"
+    },
+    {
+     "el": "Χωρίς παρμεζάνα",
+     "en": "No parmesan"
+    },
+    {
+     "el": "Χωρίς σάλτσα Caesar",
+     "en": "No Caesar sauce"
+    }
+   ],
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=900&q=80"
+  },
+  {
+   "id": "mochi",
+   "category": "desserts",
+   "name": {
+    "el": "Mochi παγωτό (σοκολάτα & φράουλα)",
+    "en": "Mochi ice cream (chocolate & strawberry)"
+   },
+   "description": {
+    "el": "6 τεμάχια, γεύσεις σοκολάτα και φράουλα",
+    "en": "6 pieces, chocolate and strawberry flavours"
+   },
+   "price": 10,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+  },
+  {
+   "id": "dubai-kunefe",
+   "category": "desserts",
+   "name": {
+    "el": "Dubai Kunefe",
+    "en": "Dubai Kunefe"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 6,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+  },
+  {
+   "id": "brookie-nutella",
+   "category": "desserts",
+   "name": {
+    "el": "Brookie Nutella",
+    "en": "Brookie Nutella"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 6,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+  },
+  {
+   "id": "brookie-lotus",
+   "category": "desserts",
+   "name": {
+    "el": "Brookie Lotus",
+    "en": "Brookie Lotus"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 6,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+  },
+  {
+   "id": "coke",
+   "category": "drinks",
+   "name": {
+    "el": "Coca-Cola",
+    "en": "Coke"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 1.5,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "coke-zero",
+   "category": "drinks",
+   "name": {
+    "el": "Coca-Cola Zero",
+    "en": "Coke Zero"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 1.5,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "sprite",
+   "category": "drinks",
+   "name": {
+    "el": "Sprite",
+    "en": "Sprite"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 1.5,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "fanta",
+   "category": "drinks",
+   "name": {
+    "el": "Fanta",
+    "en": "Fanta"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 1.5,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "water",
+   "category": "drinks",
+   "name": {
+    "el": "Νερό",
+    "en": "Water"
+   },
+   "description": {
+    "el": "0,5 L",
+    "en": "0.5 L"
+   },
+   "price": 1,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "keo",
+   "category": "drinks",
+   "name": {
+    "el": "Keo",
+    "en": "Keo"
+   },
+   "description": {
+    "el": "330ml",
+    "en": "330ml"
+   },
+   "price": 3,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "carlsberg",
+   "category": "drinks",
+   "name": {
+    "el": "Carlsberg",
+    "en": "Carlsberg"
+   },
+   "description": {
+    "el": "330ml",
+    "en": "330ml"
+   },
+   "price": 3,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "iced-tea-peach",
+   "category": "drinks",
+   "name": {
+    "el": "Iced Tea ροδάκινο",
+    "en": "Iced Tea Peach"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 1.5,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  },
+  {
+   "id": "sparkling-water",
+   "category": "drinks",
+   "name": {
+    "el": "Ανθρακούχο νερό",
+    "en": "Sparkling water"
+   },
+   "description": {
+    "el": "",
+    "en": ""
+   },
+   "price": 2.5,
+   "dietary": [],
+   "allergens": [],
+   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+  }
+ ]
 }

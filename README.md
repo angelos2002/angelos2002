@@ -24,12 +24,11 @@ Without Supabase env vars the site runs in **demo mode**: reviews and form submi
 | Colours / fonts | `tailwind.config.ts`, `app/[lang]/layout.tsx` |
 
 ### Menu JSON
-- Every text field is `{ "el": "...", "en": "..." }`.
-- Burgers that need the **size picker** use `"prices": { "180g": 9.5, "double": 12.5, "angus": 13.9 }` (keys match `optionGroups.size.choices`). Leave a size out to hide it for that item.
-- Others use a single `"price"`.
-- `"options": ["sauces"]` enables the sauce picker (choices + extra prices in `optionGroups.sauces`, `max` = how many).
-- `"signature": true` puts the item in the home-page carousel; `"badge"` adds a label.
-- Allergen keys: `gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites`. Dietary keys: `vegetarian, vegan, spicy, glutenFreeOption`.
+- Every text field is `{ "el": "...", "en": "..." }`. Prices in EUR.
+- `price` is the item's base price. `options` lists option groups from `optionGroups` (size, cooking, add-ons, sauces…). Each choice's `price` is added on top; `default: true` pre-selects it; `required: true` forces a choice.
+- `remove` is a list of free "No …" choices (e.g. No onions).
+- `signature: true` puts the item in the home-page carousel; `badge` adds a label.
+- **Allergens are empty** — fill `allergens` per item. Keys: `gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites`. Dietary keys: `vegetarian, vegan, spicy, glutenFreeOption`.
 
 ### Photos
 All photos are Unsplash placeholders referenced by URL in the JSON files and a few pages (`app/[lang]/page.tsx`, `catering`, `about`). Replace with your own (put files in `public/images/` and use `/images/…`). Any image that fails to load shows a branded fallback.

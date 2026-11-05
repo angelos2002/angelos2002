@@ -78,7 +78,7 @@ export function Checkout() {
           mode,
           location,
           customer: form,
-          lines: lines.map((l) => ({ ...l, name: getItem(l.itemId)?.name.en, total: linePrice(l) })),
+          lines: lines.map((l) => ({ ...l, name: getItem(l.itemId)?.name.en, options: lineLabel(l.itemId, l.selections, "en"), total: linePrice(l) })),
           subtotal,
           fee,
           total,
@@ -249,7 +249,7 @@ export function Checkout() {
               <li key={l.key} className="flex justify-between gap-3">
                 <span>
                   <span className="font-semibold">{l.qty}× {tr(item.name, lang)}</span>
-                  {(l.size || l.sauces.length > 0) && <span className="block text-xs text-cream-dim">{lineLabel(l.size, l.sauces, lang)}</span>}
+                  {lineLabel(l.itemId, l.selections, lang) && <span className="block text-xs text-cream-dim">{lineLabel(l.itemId, l.selections, lang)}</span>}
                 </span>
                 <span className="tabular-nums">{formatPrice(linePrice(l), lang)}</span>
               </li>

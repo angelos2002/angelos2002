@@ -4,21 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
 import { linePrice, useCart } from "@/components/providers/CartProvider";
-import { formatPrice, getItem, menu } from "@/lib/menu";
+import { formatPrice, getItem, selectionLabel } from "@/lib/menu";
 import { tr } from "@/lib/i18n";
 import { AnimatedPrice } from "./ui/AnimatedPrice";
 import { Icon } from "./ui/Icon";
 import { Sheet } from "./ui/Sheet";
 
-export function lineLabel(sizeId: string | undefined, sauces: string[], lang: "el" | "en") {
-  const parts: string[] = [];
-  const size = menu.optionGroups.size?.choices.find((c) => c.id === sizeId);
-  if (size) parts.push(tr(size.name, lang));
-  for (const s of sauces) {
-    const c = menu.optionGroups.sauces?.choices.find((x) => x.id === s);
-    if (c) parts.push(tr(c.name, lang));
-  }
-  return parts.join(" · ");
+export function lineLabel(itemId: string, selections: Record<string, string[]>, lang: "el" | "en") {
+  const item = getItem(itemId);
+  return item ? selectionLabel(item, selections, lang) : "";
 }
 
 export function CartLines({ compact = false }: { compact?: boolean }) {
@@ -40,7 +34,7 @@ export function CartLines({ compact = false }: { compact?: boolean }) {
                 <p className="font-semibold leading-tight">{tr(item.name, lang)}</p>
                 <p className="shrink-0 text-sm font-semibold tabular-nums text-cream">{formatPrice(linePrice(l), lang)}</p>
               </div>
-              {(l.size || l.sauces.length > 0) && <p className="mt-0.5 text-xs text-cream-dim">{lineLabel(l.size, l.sauces, lang)}</p>}
+              {lineLabel(l.itemId, l.selections, lang) && <p className="mt-0.5 text-xs text-cream-dim">{lineLabel(l.itemId, l.selections, lang)}</p>}
               {l.notes && <p className="mt-0.5 text-xs italic text-cream-dim">“{l.notes}”</p>}
               <div className="mt-2 flex items-center gap-2">
                 <button type="button" onClick={() => setQty(l.key, l.qty - 1)} className="grid h-8 w-8 place-items-center rounded-full border border-white/10 hover:border-flame" aria-label={t.menu.decrease}>
