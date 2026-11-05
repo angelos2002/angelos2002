@@ -33,10 +33,12 @@ export function LocationCard({ loc }: { loc: Location }) {
             })}
           </p>
         )}
-        <div className="mt-auto grid grid-cols-2 gap-2 pt-5">
-          <a href={tel} className="btn-ghost px-3 py-2.5 text-base">
-            <Icon name="phone" className="h-4 w-4" /> {t.common.call}
-          </a>
+        <div className={`mt-auto grid gap-2 pt-5 ${loc.phone ? "grid-cols-2" : "grid-cols-1"}`}>
+          {loc.phone && (
+            <a href={tel} className="btn-ghost px-3 py-2.5 text-base">
+              <Icon name="phone" className="h-4 w-4" /> {t.common.call}
+            </a>
+          )}
           <a href={directionsUrl(loc)} target="_blank" rel="noopener noreferrer" className="btn-primary px-3 py-2.5 text-base">
             <Icon name="pin" className="h-4 w-4" /> {t.common.directions}
           </a>

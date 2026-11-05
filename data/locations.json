@@ -1,70 +1,192 @@
 {
-  "_note": "Opening hours are placeholders. Edit them here. Days: 0=Sunday … 6=Saturday. Use \"24:00\" or times past midnight like \"01:00\" for late closing. Seasonal locations use seasonStart/seasonEnd (MM-DD).",
+  "_note": "Hours from the old site's Locations page. Days: 0=Sunday … 6=Saturday. A missing/empty day = closed. 'modes' = order types accepted online (dinein, takeaway, delivery). Staff can override open/closed from /admin.",
   "phone": "+357 25256699",
   "timezone": "Europe/Nicosia",
   "locations": [
     {
       "id": "zakaki",
-      "name": { "el": "Ζακάκι", "en": "Zakaki" },
-      "address": { "el": "Φραγκλίνου Ρούσβελτ 271, Λεμεσός", "en": "Franklin Roosevelt 271, Limassol" },
+      "name": {
+        "el": "Ζακάκι",
+        "en": "Zakaki"
+      },
+      "address": {
+        "el": "Φραγκλίνου Ρούσβελτ 271, Λεμεσός",
+        "en": "Franklin Roosevelt 271, Limassol"
+      },
       "mapQuery": "Franklin Roosevelt 271, Limassol, Cyprus",
       "lat": 34.6655,
       "lng": 33.0127,
       "phone": "+357 25256699",
       "delivery": true,
       "hours": {
-        "0": [["12:00", "00:00"]],
-        "1": [["12:00", "00:00"]],
-        "2": [["12:00", "00:00"]],
-        "3": [["12:00", "00:00"]],
-        "4": [["12:00", "00:00"]],
-        "5": [["12:00", "01:00"]],
-        "6": [["12:00", "01:00"]]
+        "0": [
+          [
+            "12:00",
+            "22:30"
+          ]
+        ],
+        "1": [],
+        "2": [
+          [
+            "12:00",
+            "15:00"
+          ],
+          [
+            "18:00",
+            "22:30"
+          ]
+        ],
+        "3": [
+          [
+            "12:00",
+            "15:00"
+          ],
+          [
+            "18:00",
+            "22:30"
+          ]
+        ],
+        "4": [
+          [
+            "12:00",
+            "15:00"
+          ],
+          [
+            "18:00",
+            "22:30"
+          ]
+        ],
+        "5": [
+          [
+            "12:00",
+            "15:00"
+          ],
+          [
+            "18:00",
+            "22:30"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "22:30"
+          ]
+        ]
       },
-      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80"
+      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "modes": [
+        "delivery",
+        "takeaway",
+        "dinein"
+      ]
     },
     {
       "id": "leontiou",
-      "name": { "el": "Λεοντίου", "en": "Leontiou" },
-      "address": { "el": "Αρχιεπισκόπου Λεοντίου Α' 171Α, Λεμεσός", "en": "Archiepiskopou Leontiou A 171A, Limassol" },
+      "name": {
+        "el": "Λεοντίου",
+        "en": "Leontiou"
+      },
+      "address": {
+        "el": "Αρχιεπισκόπου Λεοντίου Α' 171Α, Λεμεσός",
+        "en": "Archiepiskopou Leontiou A 171A, Limassol"
+      },
       "mapQuery": "Archiepiskopou Leontiou A 171A, Limassol, Cyprus",
       "lat": 34.6813,
-      "lng": 33.0410,
+      "lng": 33.041,
       "phone": "+357 25256699",
       "delivery": true,
       "hours": {
-        "0": [["12:00", "00:00"]],
-        "1": [["12:00", "00:00"]],
-        "2": [["12:00", "00:00"]],
-        "3": [["12:00", "00:00"]],
-        "4": [["12:00", "00:00"]],
-        "5": [["12:00", "01:00"]],
-        "6": [["12:00", "01:00"]]
+        "0": [
+          [
+            "17:00",
+            "22:30"
+          ]
+        ],
+        "1": [],
+        "2": [
+          [
+            "17:00",
+            "22:30"
+          ]
+        ],
+        "3": [
+          [
+            "17:00",
+            "22:30"
+          ]
+        ],
+        "4": [
+          [
+            "17:00",
+            "22:30"
+          ]
+        ],
+        "5": [
+          [
+            "17:00",
+            "22:30"
+          ]
+        ],
+        "6": [
+          [
+            "17:00",
+            "22:30"
+          ]
+        ]
       },
-      "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80"
+      "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80",
+      "modes": [
+        "delivery",
+        "takeaway",
+        "dinein"
+      ]
     },
     {
       "id": "guaba",
-      "name": { "el": "Guaba Beach · Pop-up", "en": "Guaba Beach · Pop-up" },
-      "address": { "el": "Guaba Beach Bar, Λεμεσός (καλοκαίρι)", "en": "Guaba Beach Bar, Limassol (summer only)" },
+      "name": {
+        "el": "Guaba · Καλοκαιρινό pop-up",
+        "en": "Guaba · Summer pop-up"
+      },
+      "address": {
+        "el": "Guaba Beach Bar, Λεμεσός (καλοκαίρι)",
+        "en": "Guaba Beach Bar, Limassol (summer only)"
+      },
       "mapQuery": "Guaba Beach Bar, Limassol, Cyprus",
       "lat": 34.6621,
       "lng": 32.9934,
-      "phone": "+357 25256699",
+      "phone": "",
       "delivery": false,
       "seasonal": true,
       "seasonStart": "06-01",
       "seasonEnd": "09-30",
       "hours": {
-        "0": [["11:00", "20:00"]],
-        "1": [["11:00", "20:00"]],
-        "2": [["11:00", "20:00"]],
-        "3": [["11:00", "20:00"]],
-        "4": [["11:00", "20:00"]],
-        "5": [["11:00", "20:00"]],
-        "6": [["11:00", "20:00"]]
+        "0": [
+          [
+            "12:00",
+            "19:00"
+          ]
+        ],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ],
+        "6": [
+          [
+            "12:00",
+            "23:30"
+          ]
+        ]
       },
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80"
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "modes": [
+        "dinein"
+      ]
     }
   ]
 }

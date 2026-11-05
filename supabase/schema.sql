@@ -46,3 +46,15 @@ alter table public.orders       enable row level security;
 drop policy if exists "public read visible reviews" on public.reviews;
 create policy "public read visible reviews" on public.reviews
   for select using (hidden = false);
+
+-- Store open/closed overrides set from /admin
+create table if not exists public.store_status (
+  id         text primary key,            -- location id (zakaki, leontiou, guaba)
+  mode       text not null default 'auto' check (mode in ('auto', 'open', 'closed')),
+  paused     text[] not null default '{}', -- order types paused: delivery, takeaway, dinein
+  updated_at timestamptz not null default now()
+);
+alter table public.store_status enable row level security;
+
+-- CVs uploaded with job applications (private bucket, server-only access)
+insert into storage.buckets (id, name, public) values ('cvs', 'cvs', false) on conflict (id) do nothing;

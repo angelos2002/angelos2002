@@ -1,5 +1,5 @@
 {
- "_note": "Menu, prices, descriptions and photos from the old streetfoodrey.com order page (Nov 2026). Photos live in public/images/menu/<id>.jpg. Set soldOut:true to grey an item out. ALLERGENS ARE NOT FILLED IN (customers are asked to call the store) — add them per item (keys: gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites). Photos are placeholders. Prices in EUR; option prices are added to the item price. 'remove' lists free 'No …' choices.",
+ "_note": "Menu, prices, descriptions and photos from the old streetfoodrey.com order page (Nov 2026). Photos live in public/images/menu/<id>.jpg. Set soldOut:true to grey an item out. guest:true shows it on the Guest Dishes page. ALLERGENS ARE NOT FILLED IN (customers are asked to call the store) — add them per item (keys: gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites). Photos are placeholders. Prices in EUR; option prices are added to the item price. 'remove' lists free 'No …' choices.",
  "currency": "EUR",
  "categories": [
   {
@@ -2346,7 +2346,12 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "/images/menu/wagyu-burger.jpg"
+   "image": "/images/menu/wagyu-burger.jpg",
+   "guest": true,
+   "badge": {
+    "el": "Guest dish",
+    "en": "Guest dish"
+   }
   },
   {
    "id": "wagyu-truffle-burger",

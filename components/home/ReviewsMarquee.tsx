@@ -1,9 +1,9 @@
 import { Stars } from "@/components/ui/Stars";
 import { tr, type Locale } from "@/lib/i18n";
 import { getLocation } from "@/lib/locations";
-import type { Review } from "@/lib/reviews";
+export type MarqueeReview = { id: string; name: string; comment: string; rating?: number; location?: string };
 
-export function ReviewsMarquee({ reviews, lang, title }: { reviews: Review[]; lang: Locale; title: string }) {
+export function ReviewsMarquee({ reviews, lang, title }: { reviews: MarqueeReview[]; lang: Locale; title: string }) {
   if (reviews.length === 0) return null;
   const list = reviews.length < 6 ? [...reviews, ...reviews] : reviews;
   return (
@@ -15,10 +15,11 @@ export function ReviewsMarquee({ reviews, lang, title }: { reviews: Review[]; la
         <ul className="flex w-max animate-marquee gap-4 group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center">
           {[...list, ...list].map((r, i) => (
             <li key={`${r.id}-${i}`} aria-hidden={i >= list.length} className="glass w-[300px] shrink-0 p-5 sm:w-[360px] motion-reduce:[&[aria-hidden=true]]:hidden">
-              <Stars value={r.rating} />
+              {r.rating ? <Stars value={r.rating} /> : <span className="font-display text-3xl leading-none text-flame">“</span>}
               <p className="mt-3 line-clamp-4 text-cream">“{r.comment}”</p>
               <p className="mt-4 text-sm text-cream-dim">
-                <span className="font-semibold text-cream-muted">{r.name}</span> · {getLocation(r.location) ? tr(getLocation(r.location)!.name, lang) : ""}
+                <span className="font-semibold text-cream-muted">{r.name}</span>
+                {r.location && getLocation(r.location) ? ` · ${tr(getLocation(r.location)!.name, lang)}` : ""}
               </p>
             </li>
           ))}

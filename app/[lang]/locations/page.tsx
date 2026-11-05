@@ -4,7 +4,7 @@ import { Icon } from "@/components/ui/Icon";
 import { OpenBadge } from "@/components/ui/OpenBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { fmt, getDictionary, tr, type Locale } from "@/lib/i18n";
-import { directionsUrl, locations, mapEmbedUrl } from "@/lib/locations";
+import { directionsUrl, locations, mapEmbedUrl, telHref } from "@/lib/locations";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
@@ -50,7 +50,7 @@ export default async function LocationsPage({ params }: { params: Promise<{ lang
                       {fmt(t.locations.summerOnly, { start: l.seasonStart.split("-").reverse().join("/"), end: l.seasonEnd.split("-").reverse().join("/") })}
                     </p>
                   )}
-                  {l.delivery && (
+                  {l.modes.includes("delivery") && (
                     <p className="mt-2 flex items-center gap-2 text-sm text-cream-muted">
                       <Icon name="truck" className="h-4 w-4 text-flame" /> {t.locations.delivery}
                     </p>
@@ -59,10 +59,12 @@ export default async function LocationsPage({ params }: { params: Promise<{ lang
                     <h3 className="kicker mb-2">{t.locations.hours}</h3>
                     <HoursTable loc={l} />
                   </div>
-                  <div className="mt-6 grid grid-cols-2 gap-2">
-                    <a href={`tel:${l.phone.replace(/\s+/g, "")}`} className="btn-ghost px-3">
-                      <Icon name="phone" className="h-4 w-4" /> {t.common.call}
-                    </a>
+                  <div className={`mt-6 grid gap-2 ${l.phone ? "grid-cols-2" : "grid-cols-1"}`}>
+                    {l.phone && (
+                      <a href={telHref(l.phone)} className="btn-ghost px-3">
+                        <Icon name="phone" className="h-4 w-4" /> {t.common.call}
+                      </a>
+                    )}
                     <a href={directionsUrl(l)} target="_blank" rel="noopener noreferrer" className="btn-primary px-3">
                       <Icon name="pin" className="h-4 w-4" /> {t.common.directions}
                     </a>

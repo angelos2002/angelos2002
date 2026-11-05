@@ -11,8 +11,11 @@ export const SOCIAL = {
   facebook: "https://www.facebook.com/streetfoodrey/",
 };
 
-/** Delivery fee in EUR — placeholder, adjust as needed. */
-export const DELIVERY_FEE = 2;
+/** Delivery fee in EUR (the old site charged none). Set >0 to add a delivery fee line. */
+export const DELIVERY_FEE = 0;
+
+/** Tip presets shown at checkout (percent of subtotal). */
+export const TIP_PERCENTS = [0, 5, 10, 15];
 
 /**
  * Catering video. Set a YouTube ID (preferred) or drop an MP4 at

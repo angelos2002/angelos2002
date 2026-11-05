@@ -48,6 +48,7 @@ export function Header() {
 
   const links = [
     { href: `/${lang}/menu`, label: t.nav.menu },
+    { href: `/${lang}/guest-dishes`, label: t.nav.guest },
     { href: `/${lang}/locations`, label: t.nav.locations },
     { href: `/${lang}/reviews`, label: t.nav.reviews },
     { href: `/${lang}/catering`, label: t.nav.catering },

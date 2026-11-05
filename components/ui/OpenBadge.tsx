@@ -3,18 +3,21 @@
 import { useEffect, useState } from "react";
 import { useI18n } from "@/components/providers/I18nProvider";
 import { fmt } from "@/lib/i18n";
+import { useStoreOverrides } from "@/components/providers/StoreStatusProvider";
 import { getLocation, getOpenStatus, type OpenStatus } from "@/lib/locations";
 
 export function useOpenStatus(locationId: string) {
   const [status, setStatus] = useState<OpenStatus | null>(null);
+  const { overrides } = useStoreOverrides();
+  const override = overrides[locationId];
   useEffect(() => {
     const loc = getLocation(locationId);
     if (!loc) return;
-    const tick = () => setStatus(getOpenStatus(loc));
+    const tick = () => setStatus(getOpenStatus(loc, new Date(), override));
     tick();
     const id = window.setInterval(tick, 30_000);
     return () => window.clearInterval(id);
-  }, [locationId]);
+  }, [locationId, override]);
   return status;
 }
 
@@ -31,7 +34,7 @@ export function OpenBadge({ locationId, className = "" }: { locationId: string; 
     tone = status.closingSoon ? "bg-ember/10 text-ember border-ember/30" : "bg-emerald-400/10 text-emerald-300 border-emerald-400/30";
     dot = status.closingSoon ? "bg-ember" : "bg-emerald-400";
     label = status.closingSoon ? t.common.closingSoon : t.common.openNow;
-    sub = fmt(t.common.closesAt, { time: status.closesAt });
+    sub = status.closesAt ? fmt(t.common.closesAt, { time: status.closesAt }) : "";
   } else if (status?.state === "closed") {
     tone = "bg-flame/10 text-flame-300 border-flame/30";
     dot = "bg-flame";

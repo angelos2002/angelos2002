@@ -5,11 +5,13 @@ import { notFound } from "next/navigation";
 import { Motion } from "@/components/providers/Motion";
 import "../globals.css";
 import { CartDrawer } from "@/components/CartDrawer";
+import { CookieConsent } from "@/components/CookieConsent";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileBar } from "@/components/MobileBar";
 import { CartProvider } from "@/components/providers/CartProvider";
 import { I18nProvider } from "@/components/providers/I18nProvider";
+import { StoreStatusProvider } from "@/components/providers/StoreStatusProvider";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import { JsonLd, restaurantSchema } from "@/lib/seo";
 import { GTM_ID, SITE_URL } from "@/lib/site";
@@ -53,6 +55,9 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang={lang} className={`${display.variable} ${body.variable}`}>
       <head>
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;var c=null;try{c=localStorage.getItem('sfr-consent')}catch(e){}var v=c==='granted'?'granted':'denied';gtag('consent','default',{analytics_storage:v,ad_storage:v,ad_user_data:v,ad_personalization:v,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});`}
+        </Script>
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
@@ -67,13 +72,16 @@ export default async function RootLayout({ children, params }: { children: React
         </a>
         <Motion>
           <I18nProvider lang={lang} dict={dict}>
+            <StoreStatusProvider>
             <CartProvider>
               <Header />
               <main id="main">{children}</main>
               <Footer lang={lang} />
               <MobileBar />
               <CartDrawer />
+              <CookieConsent />
             </CartProvider>
+            </StoreStatusProvider>
           </I18nProvider>
         </Motion>
       </body>

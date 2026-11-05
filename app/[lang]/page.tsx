@@ -10,6 +10,8 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import { locations } from "@/lib/locations";
 import { getLatestAll } from "@/lib/review-store";
 import { pageMetadata } from "@/lib/seo";
+import featured from "@/data/featured-reviews.json";
+import { SOCIAL } from "@/lib/site";
 
 export const revalidate = 300;
 
@@ -21,7 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
 export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
   const t = getDictionary(lang);
-  const reviews = await getLatestAll(12).catch(() => []);
+  const latest = await getLatestAll(12).catch(() => []);
+  const reviews = [...latest, ...featured.reviews.map((r, i) => ({ ...r, id: `featured-${i}` }))];
 
   return (
     <>
@@ -44,6 +47,28 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
       </section>
 
       <ReviewsMarquee reviews={reviews} lang={lang} title={t.home.reviewsTitle} />
+
+      <section className="container-x grid gap-5 pb-4 md:grid-cols-2">
+        {[
+          { href: SOCIAL.instagram, icon: "instagram", title: t.home.instaTitle, text: t.home.instaText, cta: "Instagram" },
+          { href: SOCIAL.facebook, icon: "facebook", title: t.home.fbTitle, text: t.home.fbText, cta: "Facebook" },
+        ].map((s, i) => (
+          <Reveal key={s.icon} delay={i * 0.08}>
+            <a href={s.href} target="_blank" rel="noopener noreferrer" className="glass group flex h-full items-start gap-5 p-6 transition hover:border-flame/40">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-flame/15 text-flame shadow-glow-sm">
+                <Icon name={s.icon} className="h-7 w-7" />
+              </span>
+              <span>
+                <span className="heading block text-2xl">{s.title}</span>
+                <span className="mt-1 block text-sm text-cream-muted">{s.text}</span>
+                <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-flame">
+                  @streetfoodrey <Icon name="arrowRight" className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
+              </span>
+            </a>
+          </Reveal>
+        ))}
+      </section>
 
       <section className="container-x py-12 md:py-20">
         <Reveal>

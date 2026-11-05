@@ -22,6 +22,7 @@ export type MenuItem = {
   image: string;
   signature?: boolean;
   soldOut?: boolean;
+  guest?: boolean;
   badge?: L10n;
 };
 

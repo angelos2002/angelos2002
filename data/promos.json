@@ -1,0 +1,6 @@
+{
+  "_note": "Promo codes. type: 'percent' (value = % off subtotal) or 'fixed' (value = € off). minSubtotal in €. Set active:true to enable. Codes are case-insensitive. Optional: modes (e.g. [\"takeaway\"]), locations (e.g. [\"zakaki\"]), expires (YYYY-MM-DD).",
+  "codes": [
+    { "code": "EXAMPLE10", "type": "percent", "value": 10, "minSubtotal": 15, "active": false }
+  ]
+}

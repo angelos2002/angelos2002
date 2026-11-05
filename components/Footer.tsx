@@ -4,11 +4,13 @@ import { locations } from "@/lib/locations";
 import { PHONE, PHONE_HREF, SOCIAL } from "@/lib/site";
 import { Icon } from "./ui/Icon";
 import { Logo } from "./ui/Logo";
+import { CookieSettingsLink } from "./CookieConsent";
 
 export function Footer({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
   const links = [
     [`/${lang}/menu`, t.nav.menu],
+    [`/${lang}/guest-dishes`, t.nav.guest],
     [`/${lang}/locations`, t.nav.locations],
     [`/${lang}/reviews`, t.nav.reviews],
     [`/${lang}/catering`, t.nav.catering],
@@ -61,7 +63,10 @@ export function Footer({ lang }: { lang: Locale }) {
       </div>
       <div className="container-x mt-12 flex flex-col gap-2 border-t border-white/5 pt-6 text-xs text-cream-dim sm:flex-row sm:justify-between">
         <span>© {new Date().getFullYear()} Street Food Rey. {t.footer.rights}</span>
-        <span>{t.footer.photoNote}</span>
+        <span className="flex gap-4">
+          <Link href={`/${lang}/privacy`} className="hover:text-cream">{t.footer.privacy}</Link>
+          <CookieSettingsLink label={t.footer.cookies} />
+        </span>
       </div>
     </footer>
   );

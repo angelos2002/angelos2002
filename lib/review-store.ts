@@ -13,26 +13,7 @@ type Row = Review & { ip_hash?: string };
 const g = globalThis as unknown as { __sfrReviews?: Row[] };
 function demo(): Row[] {
   if (!g.__sfrReviews) {
-    const now = Date.now();
-    const seed: [string, number, string, string][] = [
-      ["zakaki", 5, "Andreas K.", "Best smash burger in Limassol, hands down. The Rey sauce is addictive."],
-      ["zakaki", 5, "Maria P.", "Τέλειο Smoke King και πολύ γρήγορο delivery. Θα ξαναπαραγγείλω σίγουρα!"],
-      ["zakaki", 4, "James W.", "Great burgers, fries were crispy. Gets busy on Fridays."],
-      ["leontiou", 5, "Elena S.", "Το Wagyu Truffle αξίζει κάθε ευρώ. Φανταστικό προσωπικό."],
-      ["leontiou", 5, "Nikos D.", "Juicy patties, soft brioche, quick service. My go-to."],
-      ["leontiou", 4, "Sophie L.", "Loved the crispy chicken. Milkshake was huge."],
-      ["guaba", 5, "Chris M.", "Burgers on the beach with a sunset. Doesn't get better."],
-      ["guaba", 5, "Κατερίνα Α.", "Το καλύτερο φαγητό σε beach bar. Ζουμερό και γευστικό!"],
-    ];
-    g.__sfrReviews = seed.map(([location, rating, name, comment], i) => ({
-      id: randomUUID(),
-      location,
-      rating,
-      name,
-      comment,
-      created_at: new Date(now - (i + 1) * 86400000 * 3).toISOString(),
-      hidden: false,
-    }));
+    g.__sfrReviews = [];
   }
   return g.__sfrReviews;
 }

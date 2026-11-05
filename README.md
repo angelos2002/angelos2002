@@ -17,7 +17,9 @@ Without Supabase env vars the site runs in **demo mode**: reviews and form submi
 | What | File |
 | --- | --- |
 | **Menu, prices, sizes, sauces, allergens, photos** | `data/menu.json` |
-| Locations, addresses, opening hours, summer season dates | `data/locations.json` |
+| Locations, addresses, opening hours, order types per store, summer season dates | `data/locations.json` |
+| Promo codes | `data/promos.json` |
+| Reviews shown on the home page (from the old site) | `data/featured-reviews.json` |
 | All Greek / English text | `lib/dictionaries/el.ts`, `lib/dictionaries/en.ts` |
 | Phone, social links, delivery fee, catering video, GTM ID | `lib/site.ts` |
 | Hero burger layers (illustrated SVG, can swap for PNG cut-outs) | `components/home/BurgerLayers.tsx` |
@@ -40,8 +42,20 @@ All photos are Unsplash placeholders referenced by URL in the JSON files and a f
 
 Spam protection on public forms: hidden honeypot field, minimum time-to-submit, link/keyword filter, and a limit of 3 reviews per IP per hour (IPs are stored only as salted hashes — set `REVIEW_IP_SALT`).
 
+## Open / closed control (staff)
+Each store follows its opening hours automatically. Staff log in at `/el/admin` (password `ADMIN_PASSWORD`) and can, per store:
+- set **Automatic / Open now / Closed now** (e.g. close early, or open the Guaba pop-up), and
+- **pause** delivery, takeaway or dine-in when too busy.
+Changes reach every visitor within a minute. Overrides are saved in the `store_status` table (Supabase).
+
 ## Ordering / payment
-The cart and checkout (delivery / takeaway, location, details) are complete. **Payment is a placeholder step**: orders are POSTed to `/api/forms/order` and saved in the `orders` table. Plug a provider (JCC, Viva Wallet, Stripe…) into `components/Checkout.tsx` step 3.
+Checkout mirrors the old site: choose store → delivery / takeaway / dine-in (per store) → ASAP or a scheduled time inside opening hours (only scheduling when the store is closed) → details (saved addresses remembered on the device) → tip, promo code, privacy notice. Prices, promo, store hours and order type are re-checked on the server (`/api/orders`). Recent orders appear on the menu page with "Order again". **Payment is a placeholder step**: orders are POSTed to `/api/forms/order` and saved in the `orders` table. Plug a provider (JCC, Viva Wallet, Stripe…) into `components/Checkout.tsx` step 3.
+
+## Careers
+The application form asks the same questions as the old site (5 steps) and accepts a CV (PDF/DOC/DOCX, max 10 MB), stored in the private Supabase Storage bucket `cvs`.
+
+## Privacy & cookies
+`/privacy` is a **template** — have it reviewed. A cookie banner sets Google Consent Mode v2 (analytics/ads denied until the visitor accepts); visitors can reopen it from "Cookie settings" in the footer.
 
 ## SEO
 Per-page titles/descriptions with `hreflang` alternates, dynamic OG image (`app/[lang]/opengraph-image.tsx`), `Restaurant` JSON-LD for each location (+ `AggregateRating` on the reviews page), `sitemap.xml`, `robots.txt`. Google Tag Manager `GTM-PRJTLQX` is loaded in `app/[lang]/layout.tsx`. Set `NEXT_PUBLIC_SITE_URL` to your production domain.

@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { storeSubmission } from "@/lib/review-store";
 import { failsBotChecks, looksLikeSpam } from "@/lib/spam";
 
-const TABLES = { catering: "enquiries", careers: "applications", order: "orders" } as const;
+const TABLES = { catering: "enquiries" } as const;
 type Kind = keyof typeof TABLES;
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ kind: string }> }) {

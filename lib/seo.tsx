@@ -3,7 +3,7 @@ import { getDictionary, locales, tr, type Locale } from "./i18n";
 import { locations } from "./locations";
 import { PHONE, SITE_URL, SOCIAL } from "./site";
 
-type PageKey = "home" | "menu" | "checkout" | "locations" | "reviews" | "catering" | "about" | "careers";
+type PageKey = "home" | "menu" | "checkout" | "locations" | "reviews" | "catering" | "about" | "careers" | "guest" | "privacy";
 
 const PATHS: Record<PageKey, string> = {
   home: "",
@@ -14,6 +14,8 @@ const PATHS: Record<PageKey, string> = {
   catering: "/catering",
   about: "/about",
   careers: "/careers",
+  guest: "/guest-dishes",
+  privacy: "/privacy",
 };
 
 export function pageMetadata(lang: Locale, page: PageKey, opts: { noindex?: boolean } = {}): Metadata {
@@ -86,7 +88,7 @@ export function restaurantSchema(lang: Locale) {
           : {}),
       })),
     ),
-    potentialAction: l.delivery
+    potentialAction: l.modes.includes("delivery")
       ? { "@type": "OrderAction", target: `${SITE_URL}/${lang}/menu`, deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet", "http://purl.org/goodrelations/v1#DeliveryModePickUp"] }
       : undefined,
   }));

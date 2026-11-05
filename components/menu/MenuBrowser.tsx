@@ -15,6 +15,7 @@ import { PHONE } from "@/lib/site";
 import { basePrice, hasVariants, DIETARY, formatPrice, getItem, menu, type Dietary, type MenuItem } from "@/lib/menu";
 import { AllergenIcons, DietaryBadges, dietIcon } from "./DietaryIcons";
 import { ItemSheet } from "./ItemSheet";
+import { RecentOrders } from "./RecentOrders";
 
 const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
@@ -179,6 +180,7 @@ export function MenuBrowser() {
 
       <div className="container-x mt-8 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div>
+          <RecentOrders />
           {sections.length === 0 && (
             <div className="glass p-10 text-center text-cream-muted">
               <p>{t.menu.noResults}</p>
