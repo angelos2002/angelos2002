@@ -1,5 +1,5 @@
 {
- "_note": "Menu & prices from the old streetfoodrey.com order page (Nov 2026). Descriptions left empty where the old site's text wasn't captured. ALLERGENS ARE NOT FILLED IN — add them per item (keys: gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites). Photos are placeholders. Prices in EUR; option prices are added to the item price. 'remove' lists free 'No …' choices.",
+ "_note": "Menu, prices, descriptions and photos from the old streetfoodrey.com order page (Nov 2026). Photos live in public/images/menu/<id>.jpg. Set soldOut:true to grey an item out. ALLERGENS ARE NOT FILLED IN (customers are asked to call the store) — add them per item (keys: gluten, milk, egg, mustard, sesame, soy, nuts, peanuts, celery, fish, sulphites). Photos are placeholders. Prices in EUR; option prices are added to the item price. 'remove' lists free 'No …' choices.",
  "currency": "EUR",
  "categories": [
   {
@@ -7,6 +7,10 @@
    "name": {
     "el": "Μοσχαρίσια burgers",
     "en": "Beef burgers"
+   },
+   "note": {
+    "el": "Όλα τα μοσχαρίσια burgers ψήνονται medium to well. 100% μοσχάρι.",
+    "en": "All beef burgers are cooked medium to well. 100% beef."
    }
   },
   {
@@ -329,14 +333,6 @@
      "price": 1
     },
     {
-     "id": "bbq-classic",
-     "name": {
-      "el": "BBQ classic",
-      "en": "BBQ classic"
-     },
-     "price": 1
-    },
-    {
      "id": "philadelphia",
      "name": {
       "el": "Σάλτσα Philadelphia",
@@ -378,6 +374,375 @@
       "el": "Κέτσαπ & μουστάρδα",
       "en": "Ketchup & mustard"
      }
+    },
+    {
+     "id": "bbq-classic",
+     "name": {
+      "el": "BBQ classic",
+      "en": "BBQ classic"
+     },
+     "price": 1
+    }
+   ]
+  },
+  "beefAddonsPlus": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "halloumi",
+     "name": {
+      "el": "Χαλλούμι",
+      "en": "Halloumi cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "egg",
+     "name": {
+      "el": "Αυγό",
+      "en": "Egg"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "crispy-onions",
+     "name": {
+      "el": "Τραγανά κρεμμύδια",
+      "en": "Crispy onions"
+     },
+     "price": 1
+    },
+    {
+     "id": "extra-beef",
+     "name": {
+      "el": "Extra μπιφτέκι 180g",
+      "en": "Extra beef 180g"
+     },
+     "price": 4.8
+    }
+   ]
+  },
+  "dallasAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "crispy-onions",
+     "name": {
+      "el": "Τραγανά κρεμμύδια",
+      "en": "Crispy onions"
+     },
+     "price": 1
+    },
+    {
+     "id": "extra-beef",
+     "name": {
+      "el": "Extra μπιφτέκι 180g",
+      "en": "Extra beef 180g"
+     },
+     "price": 4.8
+    }
+   ]
+  },
+  "dallasSauce": {
+   "type": "single",
+   "required": true,
+   "name": {
+    "el": "Σάλτσα",
+    "en": "Sauce"
+   },
+   "choices": [
+    {
+     "id": "smoked-bbq",
+     "name": {
+      "el": "Καπνιστή σάλτσα BBQ",
+      "en": "Smoked BBQ sauce"
+     },
+     "default": true
+    },
+    {
+     "id": "spicy-bbq",
+     "name": {
+      "el": "Spicy σάλτσα BBQ 🌶",
+      "en": "Spicy BBQ sauce 🌶"
+     }
+    }
+   ]
+  },
+  "viennaAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "halloumi",
+     "name": {
+      "el": "Χαλλούμι",
+      "en": "Halloumi cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "extra-chicken",
+     "name": {
+      "el": "Extra κοτόπουλο",
+      "en": "Extra chicken"
+     },
+     "price": 2.5
+    }
+   ]
+  },
+  "viennaPremAddons": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "extra-chicken",
+     "name": {
+      "el": "Extra κοτόπουλο",
+      "en": "Extra chicken"
+     },
+     "price": 2.5
+    }
+   ]
+  },
+  "texasAddons2": {
+   "type": "multi",
+   "name": {
+    "el": "Extra υλικά",
+    "en": "Add-ons"
+   },
+   "choices": [
+    {
+     "id": "halloumi",
+     "name": {
+      "el": "Χαλλούμι",
+      "en": "Halloumi cheese"
+     },
+     "price": 1
+    },
+    {
+     "id": "egg",
+     "name": {
+      "el": "Αυγό",
+      "en": "Egg"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "bacon",
+     "name": {
+      "el": "Μπέικον",
+      "en": "Bacon"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "caramelised-onions",
+     "name": {
+      "el": "Καραμελωμένα κρεμμύδια",
+      "en": "Caramelised onions"
+     },
+     "price": 0.8
+    },
+    {
+     "id": "coleslaw",
+     "name": {
+      "el": "Σαλάτα coleslaw",
+      "en": "Coleslaw salad"
+     },
+     "price": 1
+    },
+    {
+     "id": "fresh-onion",
+     "name": {
+      "el": "Φρέσκο κρεμμύδι",
+      "en": "Fresh onion"
+     }
+    },
+    {
+     "id": "cheese-combo",
+     "name": {
+      "el": "Cheese combo",
+      "en": "Cheese combo"
+     },
+     "price": 1
+    },
+    {
+     "id": "cheddar",
+     "name": {
+      "el": "Τυρί cheddar",
+      "en": "Cheddar cheese"
+     },
+     "price": 0.8
     }
    ]
   },
@@ -1446,19 +1811,33 @@
     "en": "Beef Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "100% μοσχαρίσιο μπιφτέκι, μαρούλι, ντομάτα, τουρσί",
+    "en": "100% beef burger, lettuce, tomato, pickles"
    },
    "price": 7,
    "options": [
     "beefSize",
     "cookBeef",
-    "beefAddons",
+    "beefAddonsPlus",
     "sauceBeef"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+   "image": "/images/menu/beef-burger.jpg"
   },
   {
    "id": "cheeseburger",
@@ -1468,19 +1847,37 @@
     "en": "Cheeseburger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "100% μοσχαρίσιο μπιφτέκι, τυρί cheddar, μαρούλι, ντομάτα, τουρσί",
+    "en": "100% beef burger, cheddar cheese, lettuce, tomato, pickles"
    },
    "price": 8,
    "options": [
     "beefSize",
     "cookBeef",
-    "beefAddons",
+    "beefAddonsPlus",
     "sauceBeef"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+   "image": "/images/menu/cheeseburger.jpg"
   },
   {
    "id": "bacon-cheeseburger",
@@ -1490,19 +1887,41 @@
     "en": "Bacon Cheeseburger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "100% μοσχαρίσιο μπιφτέκι, τυρί cheddar, μπέικον, μαρούλι, ντομάτα, τουρσί",
+    "en": "100% beef burger, cheddar cheese, bacon, lettuce, tomato, pickles"
    },
    "price": 8.5,
    "options": [
     "beefSize",
     "cookBeef",
-    "beefAddons",
+    "beefAddonsPlus",
     "sauceBeef"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80"
+   "image": "/images/menu/bacon-cheeseburger.jpg"
   },
   {
    "id": "chefs-burger",
@@ -1512,18 +1931,49 @@
     "en": "Chef's Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "100% μοσχαρίσιο μπιφτέκι, τυρί cheddar, καραμελωμένα κρεμμύδια, αυγό, σάλτσα chef, μαρούλι, ντομάτα, τουρσί",
+    "en": "100% beef burger, cheddar cheese, caramelised onions, egg, chef's sauce, lettuce, tomato, pickles"
    },
    "price": 8.5,
    "options": [
     "beefSize",
     "cookBeef",
-    "beefAddons"
+    "beefAddonsPlus",
+    "sauceBeef"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμύδια",
+     "en": "No caramelised onions"
+    },
+    {
+     "el": "Χωρίς αυγό",
+     "en": "No egg"
+    },
+    {
+     "el": "Χωρίς σάλτσα Chef",
+     "en": "No chef's sauce"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+   "image": "/images/menu/chefs-burger.jpg"
   },
   {
    "id": "new-york-burger",
@@ -1533,18 +1983,49 @@
     "en": "New York's Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "100% μοσχαρίσιο μπιφτέκι, τυρί cheddar, καραμελωμένα κρεμμύδια, μπέικον, σάλτσα Jack Daniel's, μαρούλι, ντομάτα, τουρσί",
+    "en": "100% beef burger, cheddar cheese, caramelised onions, bacon, Jack Daniel's sauce, lettuce, tomato, pickles"
    },
    "price": 8.5,
    "options": [
     "beefSize",
     "cookBeef",
-    "beefAddons"
+    "beefAddonsPlus",
+    "sauceBeef"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    },
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμύδια",
+     "en": "No caramelised onions"
+    },
+    {
+     "el": "Χωρίς σάλτσα Jack Daniel's",
+     "en": "No Jack Daniel's sauce"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+   "image": "/images/menu/new-york-burger.jpg"
   },
   {
    "id": "london-burger",
@@ -1597,7 +2078,7 @@
     "spicy"
    ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80"
+   "image": "/images/menu/london-burger.jpg"
   },
   {
    "id": "limassol-burger",
@@ -1648,7 +2129,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80",
+   "image": "/images/menu/limassol-burger.jpg",
    "signature": true,
    "badge": {
     "el": "Αγαπημένο της Λεμεσού",
@@ -1700,7 +2181,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80"
+   "image": "/images/menu/california-burger.jpg"
   },
   {
    "id": "new-york-premium",
@@ -1744,7 +2225,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80",
+   "image": "/images/menu/new-york-premium.jpg",
    "signature": true,
    "badge": {
     "el": "Premium",
@@ -1787,7 +2268,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80",
+   "image": "/images/menu/portofino-burger.jpg",
    "signature": true
   },
   {
@@ -1798,16 +2279,36 @@
     "en": "Dallas Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "Beef cheek slow cooked για 10 ώρες, λιωμένο cheddar, pickles, δροσερό coleslaw, καπνιστή μαγιονέζα και επιλογή ανάμεσα σε καπνιστή BBQ ή Spicy BBQ sauce, σε αφράτο brioche bun",
+    "en": "Beef cheek slow-cooked for 10 hours, melted cheddar, pickles, fresh coleslaw, smoked mayonnaise and a choice of smoked BBQ or spicy BBQ sauce, on a soft brioche bun"
    },
    "price": 16,
    "options": [
-    "cookBeef"
+    "dallasSauce",
+    "dallasAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς coleslaw",
+     "en": "No coleslaw"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+   "image": "/images/menu/dallas-burger.jpg",
+   "signature": true,
+   "badge": {
+    "el": "Μαγειρεμένο 10 ώρες",
+    "en": "Slow-cooked 10h"
+   }
   },
   {
    "id": "wagyu-burger",
@@ -1845,7 +2346,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80"
+   "image": "/images/menu/wagyu-burger.jpg"
   },
   {
    "id": "wagyu-truffle-burger",
@@ -1887,7 +2388,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80",
+   "image": "/images/menu/wagyu-truffle-burger.jpg",
    "signature": true,
    "badge": {
     "el": "Wagyu",
@@ -1902,17 +2403,39 @@
     "en": "Vienna's Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "Τραγανό κοτόπουλο, σάλτσα μέλι-μουστάρδα, μαρούλι, ντομάτα, αγγούρι",
+    "en": "Crispy chicken, honey mustard sauce, lettuce, tomato, cucumber"
    },
    "price": 8.5,
    "options": [
     "chickenSize",
-    "chickenAddons"
+    "viennaAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς σάλτσα μέλι-μουστάρδα",
+     "en": "No honey mustard sauce"
+    },
+    {
+     "el": "Χωρίς αγγούρι",
+     "en": "No cucumber"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+   "image": "/images/menu/viennas-burger.jpg"
   },
   {
    "id": "viennas-premium",
@@ -1922,16 +2445,38 @@
     "en": "Vienna's Premium Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "Τραγανό κοτόπουλο, σάλτσα μέλι-μουστάρδα, τυρί cheddar, καραμελωμένα κρεμμύδια, μπέικον, σπιτική σαλάτα coleslaw",
+    "en": "Crispy chicken, honey mustard sauce, cheddar cheese, caramelised onions, bacon, homemade coleslaw salad"
    },
    "price": 10.9,
    "options": [
-    "chickenAddons"
+    "viennaPremAddons"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    },
+    {
+     "el": "Χωρίς καραμελωμένα κρεμμύδια",
+     "en": "No caramelised onions"
+    },
+    {
+     "el": "Χωρίς σάλτσα μέλι-μουστάρδα",
+     "en": "No honey mustard sauce"
+    },
+    {
+     "el": "Χωρίς coleslaw",
+     "en": "No coleslaw"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80",
+   "image": "/images/menu/viennas-premium.jpg",
    "signature": true
   },
   {
@@ -1942,18 +2487,52 @@
     "en": "Texas Burger"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "Τραγανό κοτόπουλο, τυρί cheddar, μπέικον, σάλτσα BBQ classic ή chili, σάλτσα Philadelphia, μαρούλι, ντομάτα, τουρσί, κρεμμύδι",
+    "en": "Crispy chicken, cheddar cheese, bacon, BBQ classic or chili sauce, Philadelphia cream cheese sauce, lettuce, tomato, pickles, onions"
    },
    "price": 10.9,
    "options": [
     "texasSize",
     "texasSauce",
-    "texasAddons"
+    "texasAddons2"
+   ],
+   "remove": [
+    {
+     "el": "Χωρίς μαρούλι",
+     "en": "No lettuce"
+    },
+    {
+     "el": "Χωρίς ντομάτα",
+     "en": "No tomato"
+    },
+    {
+     "el": "Χωρίς τουρσί",
+     "en": "No pickles"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    },
+    {
+     "el": "Χωρίς κρεμμύδι",
+     "en": "No onions"
+    },
+    {
+     "el": "Χωρίς cheddar",
+     "en": "No cheddar cheese"
+    },
+    {
+     "el": "Χωρίς σάλτσα Philadelphia",
+     "en": "No Philadelphia cream cheese sauce"
+    },
+    {
+     "el": "Χωρίς σάλτσα BBQ",
+     "en": "No BBQ sauce"
+    }
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+   "image": "/images/menu/texas-burger.jpg"
   },
   {
    "id": "chicken-wrap",
@@ -1963,13 +2542,35 @@
     "en": "Chicken Wrap"
    },
    "description": {
-    "el": "",
-    "en": ""
+    "el": "Τορτίγια με τραγανό κοτόπουλο, τυρί cheddar, μπέικον, πατάτες, σπιτική σαλάτα coleslaw, σάλτσα μέλι-μουστάρδα",
+    "en": "Tortilla with crispy chicken, cheddar cheese, bacon, fries, homemade coleslaw salad, honey mustard sauce"
    },
    "price": 8,
+   "remove": [
+    {
+     "el": "Χωρίς τυρί",
+     "en": "No cheese"
+    },
+    {
+     "el": "Χωρίς μπέικον",
+     "en": "No bacon"
+    },
+    {
+     "el": "Χωρίς πατάτες",
+     "en": "No fries"
+    },
+    {
+     "el": "Χωρίς coleslaw",
+     "en": "No coleslaw"
+    },
+    {
+     "el": "Χωρίς σάλτσα μέλι-μουστάρδα",
+     "en": "No honey mustard sauce"
+    }
+   ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+   "image": "/images/menu/chicken-wrap.jpg"
   },
   {
    "id": "veggie-burger",
@@ -1992,7 +2593,7 @@
     "vegetarian"
    ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=900&q=80"
+   "image": "/images/menu/veggie-burger.jpg"
   },
   {
    "id": "beyond-meat-burger",
@@ -2025,9 +2626,11 @@
      "en": "No pickles"
     }
    ],
-   "dietary": [],
+   "dietary": [
+    "vegetarian"
+   ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=900&q=80"
+   "image": "/images/menu/beyond-meat-burger.jpg"
   },
   {
    "id": "rey-dog",
@@ -2048,7 +2651,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=900&q=80"
+   "image": "/images/menu/rey-dog.jpg"
   },
   {
    "id": "rey-double-dog",
@@ -2089,7 +2692,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=900&q=80"
+   "image": "/images/menu/rey-double-dog.jpg"
   },
   {
    "id": "sauce-jd",
@@ -2107,7 +2710,7 @@
     "vegetarian"
    ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-jd.jpg"
   },
   {
    "id": "sauce-chef",
@@ -2123,7 +2726,7 @@
    "price": 2,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-chef.jpg"
   },
   {
    "id": "sauce-bbq-chilli",
@@ -2141,7 +2744,7 @@
     "spicy"
    ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-bbq-chilli.jpg"
   },
   {
    "id": "sauce-burger",
@@ -2157,7 +2760,7 @@
    "price": 2,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-burger.jpg"
   },
   {
    "id": "sauce-honey-mustard",
@@ -2173,7 +2776,7 @@
    "price": 2,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-honey-mustard.jpg"
   },
   {
    "id": "sauce-rey",
@@ -2189,7 +2792,7 @@
    "price": 2,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-rey.jpg"
   },
   {
    "id": "sachet-mayo",
@@ -2205,7 +2808,7 @@
    "price": 0.3,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sachet-mayo.jpg"
   },
   {
    "id": "sachet-ketchup",
@@ -2221,7 +2824,7 @@
    "price": 0.3,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sachet-ketchup.jpg"
   },
   {
    "id": "sauce-bbq-classic",
@@ -2237,7 +2840,7 @@
    "price": 2,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=900&q=80"
+   "image": "/images/menu/sauce-bbq-classic.jpg"
   },
   {
    "id": "rey-chicken-strips",
@@ -2256,7 +2859,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=900&q=80"
+   "image": "/images/menu/rey-chicken-strips.jpg"
   },
   {
    "id": "fries",
@@ -2274,7 +2877,7 @@
     "vegetarian"
    ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80"
+   "image": "/images/menu/fries.jpg"
   },
   {
    "id": "sweet-potatoes",
@@ -2292,7 +2895,7 @@
     "vegetarian"
    ],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80"
+   "image": "/images/menu/sweet-potatoes.jpg"
   },
   {
    "id": "onion-rings",
@@ -2311,7 +2914,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
+   "image": "/images/menu/onion-rings.jpg"
   },
   {
    "id": "cheese-rings",
@@ -2330,7 +2933,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
+   "image": "/images/menu/cheese-rings.jpg"
   },
   {
    "id": "amsterdam-potatoes",
@@ -2350,7 +2953,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=900&q=80"
+   "image": "/images/menu/amsterdam-potatoes.jpg"
   },
   {
    "id": "coleslaw-salad",
@@ -2369,7 +2972,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=900&q=80"
+   "image": "/images/menu/coleslaw-salad.jpg"
   },
   {
    "id": "chicken-nuggets",
@@ -2385,7 +2988,7 @@
    "price": 7,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80"
+   "image": "/images/menu/chicken-nuggets.jpg"
   },
   {
    "id": "krabby-patty-burger",
@@ -2412,7 +3015,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80"
+   "image": "/images/menu/krabby-patty-burger.jpg"
   },
   {
    "id": "caesar-salad",
@@ -2454,7 +3057,7 @@
    ],
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=900&q=80"
+   "image": "/images/menu/caesar-salad.jpg"
   },
   {
    "id": "mochi",
@@ -2470,7 +3073,7 @@
    "price": 10,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+   "image": "/images/menu/mochi.jpg"
   },
   {
    "id": "dubai-kunefe",
@@ -2486,7 +3089,7 @@
    "price": 6,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+   "image": "/images/menu/dubai-kunefe.jpg"
   },
   {
    "id": "brookie-nutella",
@@ -2502,7 +3105,7 @@
    "price": 6,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+   "image": "/images/menu/brookie-nutella.jpg"
   },
   {
    "id": "brookie-lotus",
@@ -2518,7 +3121,8 @@
    "price": 6,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80"
+   "image": "/images/menu/brookie-lotus.jpg",
+   "soldOut": true
   },
   {
    "id": "coke",
@@ -2534,7 +3138,7 @@
    "price": 1.5,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/coke.jpg"
   },
   {
    "id": "coke-zero",
@@ -2550,7 +3154,7 @@
    "price": 1.5,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/coke-zero.jpg"
   },
   {
    "id": "sprite",
@@ -2566,7 +3170,7 @@
    "price": 1.5,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/sprite.jpg"
   },
   {
    "id": "fanta",
@@ -2582,7 +3186,7 @@
    "price": 1.5,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/fanta.jpg"
   },
   {
    "id": "water",
@@ -2598,7 +3202,7 @@
    "price": 1,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/water.jpg"
   },
   {
    "id": "keo",
@@ -2614,7 +3218,7 @@
    "price": 3,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/keo.jpg"
   },
   {
    "id": "carlsberg",
@@ -2630,7 +3234,7 @@
    "price": 3,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/carlsberg.jpg"
   },
   {
    "id": "iced-tea-peach",
@@ -2646,7 +3250,7 @@
    "price": 1.5,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/iced-tea-peach.jpg"
   },
   {
    "id": "sparkling-water",
@@ -2662,7 +3266,7 @@
    "price": 2.5,
    "dietary": [],
    "allergens": [],
-   "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80"
+   "image": "/images/menu/sparkling-water.jpg"
   }
  ]
 }

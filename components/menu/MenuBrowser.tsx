@@ -10,7 +10,8 @@ import { useI18n } from "@/components/providers/I18nProvider";
 import { AnimatedPrice } from "@/components/ui/AnimatedPrice";
 import { Icon } from "@/components/ui/Icon";
 import { Photo } from "@/components/ui/Photo";
-import { tr } from "@/lib/i18n";
+import { fmt, tr } from "@/lib/i18n";
+import { PHONE } from "@/lib/site";
 import { basePrice, hasVariants, DIETARY, formatPrice, getItem, menu, type Dietary, type MenuItem } from "@/lib/menu";
 import { AllergenIcons, DietaryBadges, dietIcon } from "./DietaryIcons";
 import { ItemSheet } from "./ItemSheet";
@@ -23,14 +24,20 @@ function ItemCard({ item, onOpen }: { item: MenuItem; onOpen: (i: MenuItem) => v
     <motion.li layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <button
         type="button"
-        onClick={() => onOpen(item)}
-        className="glass group flex h-full w-full gap-4 p-3 text-left transition hover:border-flame/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame"
+        onClick={() => !item.soldOut && onOpen(item)}
+        disabled={item.soldOut}
+        aria-disabled={item.soldOut}
+        className={`glass group flex h-full w-full gap-4 p-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame ${item.soldOut ? "cursor-not-allowed opacity-50 grayscale" : "hover:border-flame/40 hover:bg-white/[0.06]"}`}
       >
         <Photo src={item.image} alt="" className="h-28 w-28 shrink-0 rounded-xl sm:h-32 sm:w-32" sizes="128px" />
         <span className="flex min-w-0 flex-1 flex-col py-1">
           <span className="flex items-start justify-between gap-2">
             <span className="font-display text-xl font-bold uppercase leading-tight">{tr(item.name, lang)}</span>
-            {item.badge && <span className="shrink-0 rounded-full bg-flame/15 px-2 py-0.5 text-[10px] font-bold uppercase text-flame">{tr(item.badge, lang)}</span>}
+            {item.soldOut ? (
+              <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase text-cream-muted">{t.menu.soldOut}</span>
+            ) : (
+              item.badge && <span className="shrink-0 rounded-full bg-flame/15 px-2 py-0.5 text-[10px] font-bold uppercase text-flame">{tr(item.badge, lang)}</span>
+            )}
           </span>
           {tr(item.description, lang) && <span className="mt-1 line-clamp-2 text-sm text-cream-dim">{tr(item.description, lang)}</span>}
           <span className="mt-2 flex flex-wrap gap-1.5">
@@ -42,9 +49,11 @@ function ItemCard({ item, onOpen }: { item: MenuItem; onOpen: (i: MenuItem) => v
               {hasVariants(item) ? `${t.menu.from} ` : ""}
               <span className="font-semibold text-cream">{formatPrice(basePrice(item), lang)}</span>
             </span>
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-flame text-ink shadow-glow-sm transition group-hover:scale-110" aria-hidden>
-              <Icon name="plus" className="h-4 w-4" />
-            </span>
+            {!item.soldOut && (
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-flame text-ink shadow-glow-sm transition group-hover:scale-110" aria-hidden>
+                <Icon name="plus" className="h-4 w-4" />
+              </span>
+            )}
           </span>
         </span>
       </button>
@@ -68,7 +77,7 @@ export function MenuBrowser() {
   useEffect(() => {
     const id = params.get("item");
     const item = id ? getItem(id) : undefined;
-    if (item) setSelected(item);
+    if (item && !item.soldOut) setSelected(item);
   }, [params]);
 
   const closeSheet = useCallback(() => {
@@ -184,6 +193,7 @@ export function MenuBrowser() {
                 {tr(c.name, lang)}
                 <span className="h-px flex-1 bg-gradient-to-r from-flame/50 to-transparent" />
               </h2>
+              {c.note && <p className="-mt-3 mb-5 text-sm text-cream-dim">{tr(c.note, lang)}</p>}
               <ul className="grid gap-3 md:grid-cols-2">
                 <AnimatePresence initial={false}>
                   {c.items.map((item) => (
@@ -195,7 +205,7 @@ export function MenuBrowser() {
           ))}
           <p className="mt-6 flex items-start gap-2 text-xs text-cream-dim">
             <Icon name="egg" className="mt-0.5 h-4 w-4 shrink-0 text-ember" />
-            {t.menu.allergenNote}
+            {fmt(t.menu.allergenNote, { phone: PHONE })}
           </p>
         </div>
 

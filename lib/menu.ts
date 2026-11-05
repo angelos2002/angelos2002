@@ -5,7 +5,7 @@ export type Allergen =
   | "gluten" | "milk" | "egg" | "mustard" | "sesame" | "soy" | "nuts" | "peanuts" | "celery" | "fish" | "sulphites";
 export type Dietary = "vegetarian" | "vegan" | "spicy" | "glutenFreeOption";
 
-export type Category = { id: string; name: L10n };
+export type Category = { id: string; name: L10n; note?: L10n };
 export type OptionChoice = { id: string; name: L10n; note?: L10n; price?: number; default?: boolean };
 export type OptionGroup = { type: "single" | "multi"; required?: boolean; max?: number; name: L10n; choices: OptionChoice[] };
 
@@ -21,6 +21,7 @@ export type MenuItem = {
   allergens: Allergen[];
   image: string;
   signature?: boolean;
+  soldOut?: boolean;
   badge?: L10n;
 };
 
