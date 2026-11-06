@@ -33,7 +33,7 @@ export default async function LocationsPage({ params }: { params: Promise<{ lang
                   <iframe
                     title={fmt(t.locations.map, { name })}
                     src={mapEmbedUrl(l)}
-                    className="absolute inset-0 h-full w-full border-0 [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.6)_brightness(0.9)]"
+                    className="absolute inset-0 h-full w-full border-0"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen

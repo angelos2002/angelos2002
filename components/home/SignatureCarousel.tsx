@@ -30,10 +30,10 @@ export function SignatureCarousel() {
           <p className="mt-3 text-cream-muted">{t.home.signatureSub}</p>
         </div>
         <div className="hidden gap-2 md:flex">
-          <button type="button" onClick={() => scrollBy(-1)} className="grid h-12 w-12 place-items-center rounded-full border border-white/10 hover:border-flame" aria-label={t.home.prev}>
+          <button type="button" onClick={() => scrollBy(-1)} className="grid h-12 w-12 place-items-center rounded-full border border-black/10 hover:border-flame" aria-label={t.home.prev}>
             <Icon name="arrowLeft" />
           </button>
-          <button type="button" onClick={() => scrollBy(1)} className="grid h-12 w-12 place-items-center rounded-full border border-white/10 hover:border-flame" aria-label={t.home.nextSlide}>
+          <button type="button" onClick={() => scrollBy(1)} className="grid h-12 w-12 place-items-center rounded-full border border-black/10 hover:border-flame" aria-label={t.home.nextSlide}>
             <Icon name="arrowRight" />
           </button>
         </div>
@@ -58,7 +58,7 @@ export function SignatureCarousel() {
               <Photo src={item.image} alt={tr(item.name, lang)} className="aspect-[4/3.4] w-full transition-transform duration-700 group-hover:scale-[1.04]" sizes="340px" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-[85%] bg-gradient-to-b from-transparent via-transparent to-ink-800" />
               {item.badge && (
-                <span className="absolute left-4 top-4 rounded-full bg-flame px-3 py-1 text-xs font-bold uppercase text-ink shadow-glow-sm">{tr(item.badge, lang)}</span>
+                <span className="absolute left-4 top-4 rounded-full bg-flame px-3 py-1 text-xs font-bold uppercase text-onaccent shadow-glow-sm">{tr(item.badge, lang)}</span>
               )}
               <div className="relative -mt-14 p-5">
                 <h3 className="heading text-3xl">{tr(item.name, lang)}</h3>
@@ -68,7 +68,7 @@ export function SignatureCarousel() {
                     {hasVariants(item) ? `${t.menu.from} ` : ""}
                     <span className="font-display text-2xl font-bold text-cream">{formatPrice(basePrice(item), lang)}</span>
                   </span>
-                  <span className="grid h-11 w-11 place-items-center rounded-full bg-flame text-ink shadow-glow-sm transition group-hover:scale-110">
+                  <span className="grid h-11 w-11 place-items-center rounded-full bg-flame text-onaccent shadow-glow-sm transition group-hover:scale-110">
                     <Icon name="plus" />
                   </span>
                 </div>

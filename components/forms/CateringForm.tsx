@@ -32,7 +32,7 @@ export function CateringForm() {
   if (state === "sent") {
     return (
       <div className="glass p-10 text-center" role="status">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-flame text-ink shadow-glow">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-flame text-onaccent shadow-glow">
           <Icon name="check" className="h-7 w-7" />
         </span>
         <p className="mt-5 text-lg">{c.sent}</p>
@@ -53,7 +53,7 @@ export function CateringForm() {
         <input id="e-email" name="email" type="email" required className="field" autoComplete="email" />
       </Field>
       <Field label={c.date} id="e-date">
-        <input id="e-date" name="date" type="date" className="field [color-scheme:dark]" />
+        <input id="e-date" name="date" type="date" className="field " />
       </Field>
       <Field label={c.guests} id="e-guests">
         <input id="e-guests" name="guests" type="number" min={10} max={5000} inputMode="numeric" className="field" />
@@ -72,7 +72,7 @@ export function CateringForm() {
       <Field label={c.message} id="e-msg" className="sm:col-span-2">
         <textarea id="e-msg" name="message" rows={4} maxLength={2000} className="field resize-none" />
       </Field>
-      {state === "error" && <p className="text-sm text-red-300 sm:col-span-2" role="alert">{t.common.error}</p>}
+      {state === "error" && <p className="text-sm text-red-600 sm:col-span-2" role="alert">{t.common.error}</p>}
       <button type="submit" disabled={state === "sending"} className="btn-primary sm:col-span-2">
         {state === "sending" ? t.common.sending : t.common.send}
       </button>

@@ -203,7 +203,7 @@ export function Checkout() {
   if (done) {
     return (
       <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} className="glass mx-auto max-w-xl p-10 text-center">
-        <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-flame text-ink shadow-glow">
+        <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-flame text-onaccent shadow-glow">
           <Icon name="check" className="h-8 w-8" />
         </span>
         <h2 className="heading mt-6 text-5xl">{c.confirmed}</h2>
@@ -233,7 +233,7 @@ export function Checkout() {
       <div className="glass relative p-5 md:p-8">
         {honeypot}
         <Progress steps={c.steps} current={step} />
-        {serverError && <p className="mt-6 rounded-xl border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-200" role="alert">{serverError}</p>}
+        {serverError && <p className="mt-6 rounded-xl border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-700" role="alert">{serverError}</p>}
         <AnimatePresence mode="wait">
           <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }} className="mt-8">
             {step === 0 && (
@@ -247,7 +247,7 @@ export function Checkout() {
                       return (
                         <label
                           key={l.id}
-                          className={`flex flex-col items-start justify-between gap-2 rounded-2xl border p-4 transition sm:flex-row sm:items-center sm:gap-3 ${off ? "cursor-not-allowed opacity-45" : "cursor-pointer"} ${location === l.id && !off ? "border-flame bg-flame/10" : "border-white/10 hover:border-white/25"}`}
+                          className={`flex flex-col items-start justify-between gap-2 rounded-2xl border p-4 transition sm:flex-row sm:items-center sm:gap-3 ${off ? "cursor-not-allowed opacity-45" : "cursor-pointer"} ${location === l.id && !off ? "border-flame bg-flame/10" : "border-black/10 hover:border-black/25"}`}
                         >
                           <input type="radio" name="loc" className="sr-only" disabled={off} checked={location === l.id} onChange={() => setLocation(l.id)} />
                           <span>
@@ -270,7 +270,7 @@ export function Checkout() {
                     {loc.modes.map((m) => {
                       const ok = modes.includes(m);
                       return (
-                        <label key={m} className={`rounded-2xl border p-3 transition sm:p-4 ${!ok ? "cursor-not-allowed opacity-40" : "cursor-pointer"} ${mode === m && ok ? "border-flame bg-flame/10 shadow-glow-sm" : "border-white/10 hover:border-white/25"}`}>
+                        <label key={m} className={`rounded-2xl border p-3 transition sm:p-4 ${!ok ? "cursor-not-allowed opacity-40" : "cursor-pointer"} ${mode === m && ok ? "border-flame bg-flame/10 shadow-glow-sm" : "border-black/10 hover:border-black/25"}`}>
                           <input type="radio" name="mode" className="sr-only" disabled={!ok} checked={mode === m} onChange={() => setMode(m)} />
                           <Icon name={MODE_ICON[m]} className="h-6 w-6 text-flame sm:h-7 sm:w-7" />
                           <span className="mt-2 block font-display text-lg font-bold uppercase leading-tight sm:text-xl">{c[m]}</span>
@@ -279,7 +279,7 @@ export function Checkout() {
                       );
                     })}
                   </div>
-                  {errors.mode && <p className="mt-2 text-xs text-red-300">{errors.mode}</p>}
+                  {errors.mode && <p className="mt-2 text-xs text-red-600">{errors.mode}</p>}
                 </fieldset>
 
                 <fieldset>
@@ -318,7 +318,7 @@ export function Checkout() {
                         </div>
                       </div>
                     ))}
-                  {errors.when && <p className="mt-2 text-xs text-red-300">{errors.when}</p>}
+                  {errors.when && <p className="mt-2 text-xs text-red-600">{errors.when}</p>}
                 </fieldset>
               </div>
             )}
@@ -365,16 +365,16 @@ export function Checkout() {
                   <textarea id="c-notes" rows={3} maxLength={500} className="field resize-none" value={form.notes} onChange={set("notes")} />
                 </Field>
                 <label className="flex items-center gap-3 text-sm text-cream-muted sm:col-span-2">
-                  <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="h-4 w-4 accent-[#ff6a1a]" />
+                  <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="h-4 w-4 accent-[#00b8c3]" />
                   {c.remember}
                 </label>
-                {Object.keys(errors).length > 0 && <p className="text-sm text-red-300 sm:col-span-2">{c.validation}</p>}
+                {Object.keys(errors).length > 0 && <p className="text-sm text-red-600 sm:col-span-2">{c.validation}</p>}
               </div>
             )}
 
             {step === 2 && (
               <div className="space-y-7">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm">
+                <div className="rounded-2xl border border-black/10 bg-black/[0.03] p-4 text-sm">
                   <p className="font-semibold">{tr(loc.name, lang)} · {c[mode]}</p>
                   <p className="text-cream-dim">{whenText}{mode === "delivery" && form.address ? ` · ${form.address}` : ""}{mode === "dinein" && form.table ? ` · #${form.table}` : ""}</p>
                 </div>
@@ -397,7 +397,7 @@ export function Checkout() {
                 <fieldset>
                   <legend className="heading mb-3 text-xl">{c.promo}</legend>
                   {promo ? (
-                    <div className="flex items-center gap-3 text-sm text-emerald-300">
+                    <div className="flex items-center gap-3 text-sm text-emerald-700">
                       <Icon name="check" className="h-4 w-4" /> {promoMsg}
                       <button type="button" className="text-cream-dim underline" onClick={() => { setPromo(null); setPromoMsg(""); setPromoInput(""); }}>{c.removePromo}</button>
                     </div>
@@ -407,14 +407,14 @@ export function Checkout() {
                       <button type="button" onClick={applyPromoCode} className="btn-ghost px-5 py-2 text-base">{c.apply}</button>
                     </div>
                   )}
-                  {!promo && promoMsg && <p className="mt-2 text-xs text-red-300">{promoMsg}</p>}
+                  {!promo && promoMsg && <p className="mt-2 text-xs text-red-600">{promoMsg}</p>}
                 </fieldset>
 
                 <div>
                   <h2 className="heading mb-3 text-xl">{c.payment}</h2>
                   <div className="rounded-2xl border border-dashed border-flame/40 bg-flame/5 p-4 text-sm text-cream-muted">{c.paymentPlaceholder}</div>
                   <label className="mt-3 flex items-center gap-3 rounded-2xl border border-flame bg-flame/10 p-4">
-                    <input type="radio" checked readOnly className="accent-[#ff6a1a]" />
+                    <input type="radio" checked readOnly className="accent-[#00b8c3]" />
                     <span className="text-sm">{c.payOnDelivery}</span>
                   </label>
                 </div>
@@ -466,9 +466,9 @@ export function Checkout() {
             );
           })}
         </ul>
-        <dl className="mt-5 space-y-2 border-t border-white/10 pt-4 text-sm">
+        <dl className="mt-5 space-y-2 border-t border-black/10 pt-4 text-sm">
           <div className="flex justify-between"><dt className="text-cream-muted">{c.subtotal}</dt><dd className="tabular-nums">{formatPrice(subtotal, lang)}</dd></div>
-          {discount > 0 && <div className="flex justify-between text-emerald-300"><dt>{c.discount} ({promo?.code})</dt><dd className="tabular-nums">−{formatPrice(discount, lang)}</dd></div>}
+          {discount > 0 && <div className="flex justify-between text-emerald-700"><dt>{c.discount} ({promo?.code})</dt><dd className="tabular-nums">−{formatPrice(discount, lang)}</dd></div>}
           {fee > 0 && <div className="flex justify-between"><dt className="text-cream-muted">{c.deliveryFee}</dt><dd className="tabular-nums">{formatPrice(fee, lang)}</dd></div>}
           {tip > 0 && <div className="flex justify-between"><dt className="text-cream-muted">{c.tip}</dt><dd className="tabular-nums">{formatPrice(tip, lang)}</dd></div>}
           <div className="flex items-baseline justify-between pt-2"><dt className="font-semibold">{c.total}</dt><dd><AnimatedPrice value={total} lang={lang} className="font-display text-3xl font-bold text-flame" /></dd></div>

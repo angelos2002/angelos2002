@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --mobile-bar: 0px;
 }
 @media (max-width: 767px) {
@@ -19,41 +19,42 @@ html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
   @apply bg-ink text-cream font-sans antialiased;
   background-image:
-    radial-gradient(1200px 600px at 80% -10%, rgba(255, 106, 26, 0.08), transparent 60%),
-    radial-gradient(900px 500px at -10% 30%, rgba(255, 181, 71, 0.04), transparent 60%);
+    radial-gradient(1200px 600px at 80% -10%, rgba(0, 225, 236, 0.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(0, 225, 236, 0.05), transparent 60%);
   background-attachment: fixed;
 }
 
-::selection { background: rgba(255, 106, 26, 0.4); color: #fff; }
+::selection { background: rgba(0, 225, 236, 0.45); color: #000; }
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
   .glass {
-    @apply rounded-2xl border border-white/[0.08] bg-white/[0.04] shadow-glass backdrop-blur-xl;
+    @apply rounded-2xl border border-black/[0.08] bg-white/80 shadow-glass backdrop-blur-xl;
   }
   .glass-strong {
-    @apply rounded-2xl border border-white/10 bg-ink-800/80 shadow-glass backdrop-blur-2xl;
+    @apply rounded-2xl border border-black/10 bg-white/95 shadow-glass backdrop-blur-2xl;
   }
   .heading {
     @apply font-display font-extrabold uppercase leading-[0.9] tracking-tight;
   }
   .kicker {
-    @apply font-display text-sm font-bold uppercase tracking-[0.25em] text-flame;
+    @apply font-display text-sm font-bold uppercase tracking-[0.25em] text-flame-700;
   }
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-lg font-bold uppercase tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:cursor-not-allowed disabled:opacity-50;
   }
-  .btn-primary { @apply btn bg-flame text-ink shadow-glow hover:bg-flame-400 active:scale-[0.98]; }
-  .btn-ghost { @apply btn border border-white/15 bg-white/5 text-cream backdrop-blur hover:border-flame/60 hover:text-white; }
+  .btn-primary { @apply btn bg-flame text-onaccent shadow-glow-sm hover:bg-flame-400 hover:shadow-glow active:scale-[0.98]; }
+  .btn-order { @apply btn border-2 border-orange bg-white text-orange hover:bg-orange hover:text-white active:scale-[0.98]; }
+  .btn-ghost { @apply btn border border-black/15 bg-white/70 text-cream backdrop-blur hover:border-flame-600 hover:text-black; }
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-cream-muted transition hover:border-flame/50 hover:text-cream;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-sm text-cream-muted transition hover:border-flame/50 hover:text-cream;
   }
-  .chip-active { @apply border-flame bg-flame/15 text-cream shadow-glow-sm; }
+  .chip-active { @apply border-flame-600 bg-flame/20 text-cream shadow-glow-sm; }
   .field {
-    @apply w-full rounded-xl border border-white/10 bg-ink-700/70 px-4 py-3 text-cream placeholder:text-cream-dim focus:border-flame focus:outline-none focus:ring-2 focus:ring-flame/30;
+    @apply w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-cream placeholder:text-cream-dim focus:border-flame-600 focus:outline-none focus:ring-2 focus:ring-flame/40;
   }
   .label { @apply mb-1.5 block text-sm font-medium text-cream-muted; }
-  .neon-text { text-shadow: 0 0 18px rgba(255, 106, 26, 0.55), 0 0 42px rgba(255, 106, 26, 0.25); }
+  .neon-text { text-shadow: 0 0 24px rgba(0, 225, 236, 0.35); }
   .no-scrollbar { scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
 }
@@ -63,6 +64,10 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.06;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+/* Bright cyan is for fills; text/icons use a darker cyan so they stay readable on white. */
+.text-flame { color: #00838d; }
+.hover\:text-flame:hover { color: #00838d; }

@@ -25,7 +25,7 @@ const display = Fira_Sans_Extra_Condensed({
 const body = Manrope({ subsets: ["latin", "greek"], variable: "--font-body", display: "swap" });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0908",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -67,7 +67,7 @@ export default async function RootLayout({ children, params }: { children: React
         <noscript>
           <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="gtm" />
         </noscript>
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-flame focus:px-4 focus:py-2 focus:text-ink">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-flame focus:px-4 focus:py-2 focus:text-onaccent">
           Skip to content
         </a>
         <Motion>

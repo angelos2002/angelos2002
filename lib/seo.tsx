@@ -54,7 +54,7 @@ export function restaurantSchema(lang: Locale) {
     "@id": `${SITE_URL}/#org`,
     name: "Street Food Rey",
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
+    logo: `${SITE_URL}/logo.png`,
     telephone: PHONE,
     sameAs: [SOCIAL.instagram, SOCIAL.facebook],
   };

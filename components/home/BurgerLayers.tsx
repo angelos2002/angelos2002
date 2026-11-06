@@ -83,7 +83,7 @@ export const LAYERS = [
             <stop offset="1" stopColor="#261007" />
           </linearGradient>
         </defs>
-        <rect x="14" y="4" width="332" height="48" rx="24" fill="url(#patty)" stroke="rgba(255,106,26,0.35)" strokeWidth="1.5" />
+        <rect x="14" y="4" width="332" height="48" rx="24" fill="url(#patty)" stroke="rgba(0,0,0,0.25)" strokeWidth="1.5" />
         {[[60, 18], [110, 30], [160, 16], [205, 34], [250, 20], [300, 30], [85, 40], [180, 42], [275, 42], [135, 22], [228, 26]].map(([x, y], i) => (
           <ellipse key={i} cx={x} cy={y} rx={8 + (i % 3) * 4} ry="3" fill={i % 2 ? "#1d0b04" : "#8a4a26"} opacity="0.55" />
         ))}

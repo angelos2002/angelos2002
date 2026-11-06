@@ -23,7 +23,7 @@ export function CartLines({ compact = false }: { compact?: boolean }) {
       {lines.map((l) => {
         const item = getItem(l.itemId)!;
         return (
-          <li key={l.key} className="flex gap-3 rounded-2xl border border-white/5 bg-white/[0.03] p-3">
+          <li key={l.key} className="flex gap-3 rounded-2xl border border-black/5 bg-black/[0.03] p-3">
             {!compact && (
               <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-ink-600">
                 <Image src={item.image} alt="" fill sizes="64px" className="object-cover" />
@@ -37,11 +37,11 @@ export function CartLines({ compact = false }: { compact?: boolean }) {
               {lineLabel(l.itemId, l.selections, lang) && <p className="mt-0.5 text-xs text-cream-dim">{lineLabel(l.itemId, l.selections, lang)}</p>}
               {l.notes && <p className="mt-0.5 text-xs italic text-cream-dim">“{l.notes}”</p>}
               <div className="mt-2 flex items-center gap-2">
-                <button type="button" onClick={() => setQty(l.key, l.qty - 1)} className="grid h-8 w-8 place-items-center rounded-full border border-white/10 hover:border-flame" aria-label={t.menu.decrease}>
+                <button type="button" onClick={() => setQty(l.key, l.qty - 1)} className="grid h-8 w-8 place-items-center rounded-full border border-black/10 hover:border-flame" aria-label={t.menu.decrease}>
                   <Icon name={l.qty === 1 ? "x" : "minus"} className="h-4 w-4" />
                 </button>
                 <span className="w-6 text-center text-sm tabular-nums">{l.qty}</span>
-                <button type="button" onClick={() => setQty(l.key, l.qty + 1)} className="grid h-8 w-8 place-items-center rounded-full border border-white/10 hover:border-flame" aria-label={t.menu.increase}>
+                <button type="button" onClick={() => setQty(l.key, l.qty + 1)} className="grid h-8 w-8 place-items-center rounded-full border border-black/10 hover:border-flame" aria-label={t.menu.increase}>
                   <Icon name="plus" className="h-4 w-4" />
                 </button>
               </div>

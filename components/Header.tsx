@@ -24,12 +24,12 @@ export function BagButton({ className = "" }: { className?: string }) {
       type="button"
       onClick={() => setOpen(true)}
       animate={controls}
-      className={`relative grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-cream hover:border-flame/60 ${className}`}
+      className={`relative grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-black/5 text-cream hover:border-flame/60 ${className}`}
       aria-label={`${t.menu.bag} (${count})`}
     >
       <Icon name="bag" />
       {hydrated && count > 0 && (
-        <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-flame px-1 text-[11px] font-bold text-ink shadow-glow-sm">
+        <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-flame px-1 text-[11px] font-bold text-onaccent shadow-glow-sm">
           {count}
         </span>
       )}
@@ -59,9 +59,9 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`transition-all duration-300 ${scrolled || menuOpen ? "border-b border-white/5 bg-ink/75 backdrop-blur-xl" : "bg-transparent"}`}
+        className={`transition-all duration-300 ${scrolled || menuOpen ? "border-b border-black/10 bg-white/90 shadow-sm backdrop-blur-xl" : "bg-white/60 backdrop-blur"}`}
       >
-        <div className="container-x flex h-16 items-center justify-between gap-4 md:h-20">
+        <div className="container-x flex h-[72px] items-center justify-between gap-4 md:h-[88px]">
           <Link href={`/${lang}`} aria-label="Street Food Rey" className="shrink-0">
             <Logo />
           </Link>
@@ -75,7 +75,7 @@ export function Header() {
                   aria-current={active ? "page" : undefined}
                   className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition ${active ? "text-cream" : "text-cream-muted hover:text-cream"}`}
                 >
-                  {active && <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-white/[0.07]" />}
+                  {active && <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-black/[0.07]" />}
                   {l.label}
                 </Link>
               );
@@ -87,13 +87,13 @@ export function Header() {
               <Icon name="phone" className="h-4 w-4" /> {PHONE}
             </a>
             <BagButton />
-            <Link href={`/${lang}/menu`} className="btn-primary hidden px-5 py-2.5 text-base md:inline-flex">
-              {t.common.orderNow}
+            <Link href={`/${lang}/menu`} className="btn-order hidden px-5 py-2 text-base md:inline-flex">
+              {t.common.orderNow} <span aria-hidden>🔥</span>
             </Link>
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 lg:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-black/5 lg:hidden"
               aria-expanded={menuOpen}
               aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
             >
@@ -114,7 +114,7 @@ export function Header() {
             <ul>
               {[{ href: `/${lang}`, label: t.nav.home }, ...links].map((l, i) => (
                 <motion.li key={l.href} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.03 }}>
-                  <Link href={l.href} className="flex items-center justify-between rounded-2xl px-4 py-3.5 font-display text-2xl font-bold uppercase hover:bg-white/5">
+                  <Link href={l.href} className="flex items-center justify-between rounded-2xl px-4 py-3.5 font-display text-2xl font-bold uppercase hover:bg-black/5">
                     {l.label}
                     <Icon name="arrowRight" className="h-5 w-5 text-flame" />
                   </Link>

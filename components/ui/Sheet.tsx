@@ -77,15 +77,15 @@ export function Sheet({
               exit={{ y: side === "right" ? 0 : 60, x: side === "right" ? 40 : 0, opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 320 }}
             >
-              <div className="flex items-center justify-between gap-4 border-b border-white/5 px-5 py-4">
-                <span className="mx-auto h-1 w-10 rounded-full bg-white/15 md:hidden absolute left-1/2 top-2 -translate-x-1/2" />
+              <div className="flex items-center justify-between gap-4 border-b border-black/5 px-5 py-4">
+                <span className="mx-auto h-1 w-10 rounded-full bg-black/15 md:hidden absolute left-1/2 top-2 -translate-x-1/2" />
                 <h2 className="heading text-2xl">{title}</h2>
-                <button type="button" onClick={onClose} className="rounded-full p-2 text-cream-muted hover:bg-white/10 hover:text-cream" aria-label={closeLabel}>
+                <button type="button" onClick={onClose} className="rounded-full p-2 text-cream-muted hover:bg-black/10 hover:text-cream" aria-label={closeLabel}>
                   <Icon name="x" />
                 </button>
               </div>
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-5">{children}</div>
-              {footer && <div className="border-t border-white/5 bg-ink-800/90 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">{footer}</div>}
+              {footer && <div className="border-t border-black/5 bg-ink-800/90 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">{footer}</div>}
             </motion.div>
           </div>
         </div>

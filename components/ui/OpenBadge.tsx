@@ -25,18 +25,18 @@ export function OpenBadge({ locationId, className = "" }: { locationId: string; 
   const { t } = useI18n();
   const status = useOpenStatus(locationId);
 
-  let tone = "bg-white/5 text-cream-dim border-white/10";
+  let tone = "bg-black/5 text-cream-dim border-black/10";
   let dot = "bg-cream-dim";
   let label = " ";
   let sub = "";
 
   if (status?.state === "open") {
-    tone = status.closingSoon ? "bg-ember/10 text-ember border-ember/30" : "bg-emerald-400/10 text-emerald-300 border-emerald-400/30";
-    dot = status.closingSoon ? "bg-ember" : "bg-emerald-400";
+    tone = status.closingSoon ? "bg-ember/10 text-ember border-ember/30" : "bg-emerald-400/10 text-emerald-700 border-emerald-500/40";
+    dot = status.closingSoon ? "bg-ember" : "bg-emerald-500";
     label = status.closingSoon ? t.common.closingSoon : t.common.openNow;
     sub = status.closesAt ? fmt(t.common.closesAt, { time: status.closesAt }) : "";
   } else if (status?.state === "closed") {
-    tone = "bg-flame/10 text-flame-300 border-flame/30";
+    tone = "bg-flame/10 text-flame-700 border-flame/30";
     dot = "bg-flame";
     label = t.common.closed;
     const n = status.nextOpen;

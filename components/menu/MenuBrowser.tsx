@@ -28,14 +28,14 @@ function ItemCard({ item, onOpen }: { item: MenuItem; onOpen: (i: MenuItem) => v
         onClick={() => !item.soldOut && onOpen(item)}
         disabled={item.soldOut}
         aria-disabled={item.soldOut}
-        className={`glass group flex h-full w-full gap-4 p-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame ${item.soldOut ? "cursor-not-allowed opacity-50 grayscale" : "hover:border-flame/40 hover:bg-white/[0.06]"}`}
+        className={`glass group flex h-full w-full gap-4 p-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-flame ${item.soldOut ? "cursor-not-allowed opacity-50 grayscale" : "hover:border-flame/40 hover:bg-black/[0.06]"}`}
       >
         <Photo src={item.image} alt="" className="h-28 w-28 shrink-0 rounded-xl sm:h-32 sm:w-32" sizes="128px" />
         <span className="flex min-w-0 flex-1 flex-col py-1">
           <span className="flex items-start justify-between gap-2">
             <span className="font-display text-xl font-bold uppercase leading-tight">{tr(item.name, lang)}</span>
             {item.soldOut ? (
-              <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase text-cream-muted">{t.menu.soldOut}</span>
+              <span className="shrink-0 rounded-full bg-black/10 px-2 py-0.5 text-[10px] font-bold uppercase text-cream-muted">{t.menu.soldOut}</span>
             ) : (
               item.badge && <span className="shrink-0 rounded-full bg-flame/15 px-2 py-0.5 text-[10px] font-bold uppercase text-flame">{tr(item.badge, lang)}</span>
             )}
@@ -51,7 +51,7 @@ function ItemCard({ item, onOpen }: { item: MenuItem; onOpen: (i: MenuItem) => v
               <span className="font-semibold text-cream">{formatPrice(basePrice(item), lang)}</span>
             </span>
             {!item.soldOut && (
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-flame text-ink shadow-glow-sm transition group-hover:scale-110" aria-hidden>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-flame text-onaccent shadow-glow-sm transition group-hover:scale-110" aria-hidden>
                 <Icon name="plus" className="h-4 w-4" />
               </span>
             )}
@@ -136,7 +136,7 @@ export function MenuBrowser() {
   return (
     <div className="pb-[calc(var(--mobile-bar)+80px)] lg:pb-0">
       {/* Sticky controls */}
-      <div className="sticky top-16 z-30 border-b border-white/5 bg-ink/85 backdrop-blur-xl md:top-20">
+      <div className="sticky top-16 z-30 border-b border-black/5 bg-ink/85 backdrop-blur-xl md:top-20">
         <div className="container-x py-3">
           <div className="flex flex-col gap-3 md:flex-row md:items-center">
             <label className="relative flex-1">
@@ -168,7 +168,7 @@ export function MenuBrowser() {
                 aria-selected={on}
                 type="button"
                 onClick={() => goTo(c.id)}
-                className={`relative shrink-0 rounded-full px-4 py-2 font-display text-base font-bold uppercase tracking-wide transition ${on ? "text-ink" : "text-cream-muted hover:text-cream"}`}
+                className={`relative shrink-0 rounded-full px-4 py-2 font-display text-base font-bold uppercase tracking-wide transition ${on ? "text-onaccent" : "text-cream-muted hover:text-cream"}`}
               >
                 {on && <motion.span layoutId="cat-pill" className="absolute inset-0 -z-10 rounded-full bg-flame shadow-glow-sm" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
                 {tr(c.name, lang)}
@@ -224,7 +224,7 @@ export function MenuBrowser() {
               {hydrated && count > 0 ? <CartLines compact /> : <p className="py-6 text-sm text-cream-dim">{t.menu.emptyBag}</p>}
             </div>
             {hydrated && count > 0 && (
-              <div className="mt-4 border-t border-white/5 pt-4">
+              <div className="mt-4 border-t border-black/5 pt-4">
                 <div className="mb-3 flex items-baseline justify-between">
                   <span className="text-cream-muted">{t.checkout.subtotal}</span>
                   <AnimatedPrice value={subtotal} lang={lang} className="font-display text-2xl font-bold" />
@@ -246,7 +246,7 @@ export function MenuBrowser() {
               <button type="button" onClick={() => setOpen(true)} className="flex flex-1 items-center gap-3 text-left" aria-label={t.menu.viewBag}>
                 <span ref={registerTarget} className="relative grid h-11 w-11 place-items-center rounded-full bg-flame/15 text-flame">
                   <Icon name="bag" />
-                  <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-flame px-1 text-[11px] font-bold text-ink">{count}</span>
+                  <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-flame px-1 text-[11px] font-bold text-onaccent">{count}</span>
                 </span>
                 <span>
                   <span className="block text-xs text-cream-dim">{t.menu.viewBag}</span>

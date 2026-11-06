@@ -55,7 +55,7 @@ export function AdminStores({ initial }: { initial: Overrides }) {
                       type="button"
                       aria-pressed={paused}
                       onClick={() => save(l.id, { ...cur, paused: paused ? (cur.paused ?? []).filter((x) => x !== m) : [...(cur.paused ?? []), m] })}
-                      className={`chip ${paused ? "border-red-400/60 bg-red-500/10 text-red-200" : ""}`}
+                      className={`chip ${paused ? "border-red-500/60 bg-red-500/10 text-red-700" : ""}`}
                     >
                       {t.checkout[m]}{paused ? ` · ${a.paused}` : ""}
                     </button>

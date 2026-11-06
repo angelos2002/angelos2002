@@ -18,17 +18,17 @@ export function Footer({ lang }: { lang: Locale }) {
     [`/${lang}/careers`, t.nav.careers],
   ];
   return (
-    <footer className="relative mt-24 border-t border-white/5 bg-ink-800/60 pb-[calc(var(--mobile-bar)+1.5rem)] pt-14">
+    <footer className="relative mt-24 border-t border-black/10 bg-black text-white [&_.text-cream-dim]:text-white/60 [&_.text-cream-muted]:text-white/75 [&_.text-cream]:text-white [&_.border-black\/10]:border-white/15 [&_.border-black\/5]:border-white/10 pb-[calc(var(--mobile-bar)+1.5rem)] pt-14">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/60 to-transparent" />
       <div className="container-x grid gap-10 md:grid-cols-4">
         <div className="md:col-span-1">
-          <Logo />
+          <span className="inline-block rounded-2xl bg-white p-2"><Logo /></span>
           <p className="mt-4 max-w-xs text-sm text-cream-dim">{t.footer.tagline}</p>
           <div className="mt-5 flex gap-2">
-            <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-white/10 hover:border-flame hover:text-flame">
+            <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 hover:border-flame hover:text-flame">
               <Icon name="instagram" />
             </a>
-            <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-white/10 hover:border-flame hover:text-flame">
+            <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 hover:border-flame hover:text-flame">
               <Icon name="facebook" />
             </a>
           </div>
@@ -61,7 +61,7 @@ export function Footer({ lang }: { lang: Locale }) {
           </a>
         </div>
       </div>
-      <div className="container-x mt-12 flex flex-col gap-2 border-t border-white/5 pt-6 text-xs text-cream-dim sm:flex-row sm:justify-between">
+      <div className="container-x mt-12 flex flex-col gap-2 border-t border-black/5 pt-6 text-xs text-cream-dim sm:flex-row sm:justify-between">
         <span>© {new Date().getFullYear()} Street Food Rey. {t.footer.rights}</span>
         <span className="flex gap-4">
           <Link href={`/${lang}/privacy`} className="hover:text-cream">{t.footer.privacy}</Link>

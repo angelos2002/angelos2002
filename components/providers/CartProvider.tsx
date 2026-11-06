@@ -137,7 +137,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 animate={{ x: [sx, (sx + ex) / 2, ex], y: [sy, Math.min(sy, ey) - 120, ey], scale: [1, 0.8, 0.25], opacity: [1, 1, 0.6] }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.75, ease: [0.5, 0, 0.3, 1], times: [0, 0.45, 1] }}
-                style={{ backgroundImage: `url(${f.image})`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#ff6a1a" }}
+                style={{ backgroundImage: `url(${f.image})`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#00e1ec" }}
               />
             );
           })}

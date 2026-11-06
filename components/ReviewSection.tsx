@@ -27,7 +27,7 @@ function StarInput({ value, onChange, label }: { value: number; onChange: (n: nu
               name="star"
               stroke="none"
               fill="currentColor"
-              className={`h-9 w-9 transition ${n <= shown ? "text-ember drop-shadow-[0_0_8px_rgba(255,181,71,0.7)]" : "text-white/15"}`}
+              className={`h-9 w-9 transition ${n <= shown ? "text-ember drop-shadow-[0_0_8px_rgba(217,142,0,0.7)]" : "text-black/15"}`}
             />
           </motion.span>
         </label>
@@ -122,10 +122,10 @@ export function ReviewSection({ loc, initial, demo }: { loc: Location; initial: 
             <Field label={t.reviews.comment} id={`c-${loc.id}`}>
               <textarea id={`c-${loc.id}`} rows={4} maxLength={1000} className="field resize-none" placeholder={t.reviews.commentPlaceholder} value={comment} onChange={(e) => setComment(e.target.value)} />
             </Field>
-            {error && <p className="text-sm text-red-300" role="alert">{error}</p>}
+            {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
             <AnimatePresence>
               {thanks && !error && (
-                <motion.p initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2 text-sm text-emerald-300" role="status">
+                <motion.p initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2 text-sm text-emerald-700" role="status">
                   <Icon name="check" className="h-4 w-4" /> {t.reviews.thanks}
                 </motion.p>
               )}

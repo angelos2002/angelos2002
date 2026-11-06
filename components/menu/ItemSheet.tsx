@@ -60,7 +60,7 @@ export function ItemSheet({ item, onClose }: { item: MenuItem | null; onClose: (
       closeLabel={t.common.close}
       footer={
         <div className="flex items-center gap-3">
-          <div className="flex items-center rounded-full border border-white/10">
+          <div className="flex items-center rounded-full border border-black/10">
             <button type="button" className="grid h-12 w-11 place-items-center disabled:opacity-40" onClick={() => setQty((q) => Math.max(1, q - 1))} disabled={qty <= 1} aria-label={t.menu.decrease}>
               <Icon name="minus" className="h-4 w-4" />
             </button>
@@ -105,13 +105,13 @@ export function ItemSheet({ item, onClose }: { item: MenuItem | null; onClose: (
                 {group.choices.map((c) => {
                   const active = chosen.includes(c.id);
                   return (
-                    <label key={c.id} className={`relative cursor-pointer rounded-2xl border p-3.5 transition ${active ? "border-flame bg-flame/10 shadow-glow-sm" : "border-white/10 bg-white/[0.03] hover:border-white/25"}`}>
+                    <label key={c.id} className={`relative cursor-pointer rounded-2xl border p-3.5 transition ${active ? "border-flame bg-flame/10 shadow-glow-sm" : "border-black/10 bg-black/[0.03] hover:border-black/25"}`}>
                       <input type="radio" name={gid} checked={active} onChange={() => pickSingle(gid, c.id, true)} className="sr-only" />
                       <span className="block pr-6 font-display text-lg font-bold uppercase leading-tight">{tr(c.name, lang)}</span>
                       <span className="mt-1 block text-sm font-semibold tabular-nums text-cream">{formatPrice(shown.price + (c.price ?? 0), lang)}</span>
                       <AnimatePresence>
                         {active && (
-                          <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="absolute right-2.5 top-2.5 grid h-5 w-5 place-items-center rounded-full bg-flame text-ink">
+                          <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="absolute right-2.5 top-2.5 grid h-5 w-5 place-items-center rounded-full bg-flame text-onaccent">
                             <Icon name="check" className="h-3.5 w-3.5" />
                           </motion.span>
                         )}
@@ -126,7 +126,7 @@ export function ItemSheet({ item, onClose }: { item: MenuItem | null; onClose: (
                   const active = chosen.includes(c.id);
                   const disabled = !single && !active && !!group.max && chosen.length >= group.max;
                   return (
-                    <label key={c.id} className={`chip cursor-pointer ${active ? (isRemove ? "border-red-400/60 bg-red-500/10 text-cream" : "chip-active") : ""} ${disabled ? "opacity-40" : ""}`}>
+                    <label key={c.id} className={`chip cursor-pointer ${active ? (isRemove ? "border-red-500/60 bg-red-500/10 text-cream" : "chip-active") : ""} ${disabled ? "opacity-40" : ""}`}>
                       <input
                         type={single ? "radio" : "checkbox"}
                         name={gid}
@@ -135,7 +135,7 @@ export function ItemSheet({ item, onClose }: { item: MenuItem | null; onClose: (
                         onChange={() => (single ? pickSingle(gid, c.id, group.required) : toggleMulti(gid, c.id, group.max))}
                         className="sr-only"
                       />
-                      {active && <Icon name={isRemove ? "x" : "check"} className={`h-3.5 w-3.5 ${isRemove ? "text-red-300" : "text-flame"}`} />}
+                      {active && <Icon name={isRemove ? "x" : "check"} className={`h-3.5 w-3.5 ${isRemove ? "text-red-600" : "text-flame"}`} />}
                       {tr(c.name, lang)}
                       {c.price ? <span className="text-xs text-cream-dim">+{formatPrice(c.price, lang)}</span> : null}
                     </label>

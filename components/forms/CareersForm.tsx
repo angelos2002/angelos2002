@@ -119,7 +119,7 @@ export function CareersForm() {
   if (state === "sent") {
     return (
       <div className="glass p-10 text-center" role="status">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-flame text-ink shadow-glow">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-flame text-onaccent shadow-glow">
           <Icon name="check" className="h-7 w-7" />
         </span>
         <p className="mt-5 text-lg">{c.sent}</p>
@@ -164,7 +164,7 @@ export function CareersForm() {
               );
             })}
           </div>
-          {errors[q.k] && <p className="mt-1 text-xs text-red-300">{errors[q.k]}</p>}
+          {errors[q.k] && <p className="mt-1 text-xs text-red-600">{errors[q.k]}</p>}
         </fieldset>
       );
     }
@@ -183,7 +183,7 @@ export function CareersForm() {
           <input
             id={id}
             type={q.type}
-            className={`field ${q.type === "date" ? "[color-scheme:dark] sm:max-w-xs" : ""}`}
+            className={`field ${q.type === "date" ? "sm:max-w-xs" : ""}`}
             min={q.type === "number" ? 16 : undefined}
             max={q.type === "number" ? 80 : undefined}
             autoComplete={q.k === "fullName" ? "name" : q.k === "phone" ? "tel" : q.k === "email" ? "email" : undefined}
@@ -209,7 +209,7 @@ export function CareersForm() {
               {step === 2 && (
                 <div className="sm:col-span-2">
                   <label htmlFor="a-cv" className="label">{c.cv}</label>
-                  <label htmlFor="a-cv" className="flex cursor-pointer items-center gap-3 rounded-2xl border border-dashed border-white/20 bg-white/[0.03] p-4 hover:border-flame/60">
+                  <label htmlFor="a-cv" className="flex cursor-pointer items-center gap-3 rounded-2xl border border-dashed border-black/20 bg-black/[0.03] p-4 hover:border-flame/60">
                     <Icon name="plus" className="h-5 w-5 text-flame" />
                     <span className="text-sm">{cv ? cv.name : c.cvPick}</span>
                   </label>
@@ -221,24 +221,24 @@ export function CareersForm() {
                     onChange={(e) => setCv(e.target.files?.[0] ?? null)}
                   />
                   <p className="mt-1 text-xs text-cream-dim">{c.cvHelp}</p>
-                  {errors.cv && <p className="mt-1 text-xs text-red-300">{errors.cv}</p>}
+                  {errors.cv && <p className="mt-1 text-xs text-red-600">{errors.cv}</p>}
                 </div>
               )}
 
               {step === total - 1 && (
                 <div className="space-y-3 sm:col-span-2">
                   <label className="flex items-start gap-3 text-sm">
-                    <input type="checkbox" checked={consent.privacy} onChange={(e) => setConsent((x) => ({ ...x, privacy: e.target.checked }))} className="mt-1 h-4 w-4 accent-[#ff6a1a]" />
+                    <input type="checkbox" checked={consent.privacy} onChange={(e) => setConsent((x) => ({ ...x, privacy: e.target.checked }))} className="mt-1 h-4 w-4 accent-[#00b8c3]" />
                     <span>
                       {c.consentPrivacy} <a href={`/${lang}/privacy`} target="_blank" className="underline hover:text-flame">{t.footer.privacy}</a> <span className="text-flame">*</span>
                     </span>
                   </label>
                   <label className="flex items-start gap-3 text-sm">
-                    <input type="checkbox" checked={consent.verify} onChange={(e) => setConsent((x) => ({ ...x, verify: e.target.checked }))} className="mt-1 h-4 w-4 accent-[#ff6a1a]" />
+                    <input type="checkbox" checked={consent.verify} onChange={(e) => setConsent((x) => ({ ...x, verify: e.target.checked }))} className="mt-1 h-4 w-4 accent-[#00b8c3]" />
                     <span>{c.consentVerify} <span className="text-flame">*</span></span>
                   </label>
-                  {errors.consent && <p className="text-xs text-red-300">{errors.consent}</p>}
-                  {state === "error" && <p className="text-sm text-red-300" role="alert">{t.common.error}</p>}
+                  {errors.consent && <p className="text-xs text-red-600">{errors.consent}</p>}
+                  {state === "error" && <p className="text-sm text-red-600" role="alert">{t.common.error}</p>}
                 </div>
               )}
             </div>

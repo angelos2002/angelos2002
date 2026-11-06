@@ -25,7 +25,7 @@ export function AdminLogin() {
     >
       <label htmlFor="pw" className="label">{t.admin.password}</label>
       <input id="pw" type="password" className="field" value={pw} onChange={(e) => setPw(e.target.value)} autoComplete="current-password" />
-      {err && <p className="text-sm text-red-300">{t.admin.wrong}</p>}
+      {err && <p className="text-sm text-red-600">{t.admin.wrong}</p>}
       <button className="btn-primary w-full" type="submit">{t.admin.login}</button>
     </form>
   );
@@ -76,7 +76,7 @@ export function AdminReviews({ initial }: { initial: Review[] }) {
                 <span className="font-semibold">{r.name}</span>
                 <span className="text-cream-dim">{tr(getLocation(r.location)?.name ?? { el: r.location, en: r.location }, lang)}</span>
                 <span className="text-cream-dim">{new Date(r.created_at).toLocaleString()}</span>
-                <span className={`rounded-full px-2 py-0.5 text-xs ${r.hidden ? "bg-red-500/15 text-red-300" : "bg-emerald-400/15 text-emerald-300"}`}>
+                <span className={`rounded-full px-2 py-0.5 text-xs ${r.hidden ? "bg-red-500/15 text-red-600" : "bg-emerald-400/15 text-emerald-700"}`}>
                   {r.hidden ? t.admin.hidden : t.admin.visible}
                 </span>
               </div>

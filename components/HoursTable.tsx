@@ -22,7 +22,7 @@ export function HoursTable({ loc }: { loc: Location }) {
           const spans = loc.hours[String(d)] ?? [];
           const isToday = today === d;
           return (
-            <tr key={d} className={`border-b border-white/5 last:border-0 ${isToday ? "text-cream" : "text-cream-muted"}`}>
+            <tr key={d} className={`border-b border-black/5 last:border-0 ${isToday ? "text-cream" : "text-cream-muted"}`}>
               <th scope="row" className={`py-2 text-left font-medium ${isToday ? "text-flame" : ""}`}>
                 {t.locations.days[d]}
                 {isToday && <span className="ml-2 rounded-full bg-flame/15 px-2 py-0.5 text-[10px] uppercase">{t.common.today}</span>}

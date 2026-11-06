@@ -22,7 +22,7 @@ export function DirectionsSheet({ open, onClose }: { open: boolean; onClose: () 
               href={directionsUrl(l)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 hover:border-flame/60"
+              className="flex items-center justify-between gap-3 rounded-2xl border border-black/10 bg-black/[0.03] p-4 hover:border-flame/60"
             >
               <span>
                 <span className="block font-display text-xl font-bold uppercase">{tr(l.name, lang)}</span>
@@ -47,10 +47,10 @@ export function MobileBar() {
     <>
       <nav
         aria-label="Quick actions"
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink/85 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-ink/85 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
       >
         <div className="flex h-[68px] items-stretch px-2">
-          <Link href={hydrated && count > 0 ? `/${lang}/checkout` : `/${lang}/menu`} className={`${item} relative mx-1 my-2 rounded-2xl bg-flame text-ink shadow-glow`}>
+          <Link href={hydrated && count > 0 ? `/${lang}/checkout` : `/${lang}/menu`} className={`${item} relative mx-1 my-2 rounded-2xl bg-flame text-onaccent shadow-glow`}>
             <Icon name="bag" className="h-5 w-5" />
             {t.nav.order}
             {hydrated && count > 0 && (

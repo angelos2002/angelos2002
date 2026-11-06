@@ -5,10 +5,10 @@ import { Icon } from "@/components/ui/Icon";
 import type { Allergen, Dietary } from "@/lib/menu";
 
 const DIET_ICON: Record<Dietary, { icon: string; cls: string }> = {
-  vegetarian: { icon: "leaf", cls: "text-emerald-300 border-emerald-400/30 bg-emerald-400/10" },
-  vegan: { icon: "sprout", cls: "text-lime-300 border-lime-400/30 bg-lime-400/10" },
-  spicy: { icon: "chili", cls: "text-red-300 border-red-400/30 bg-red-500/10" },
-  glutenFreeOption: { icon: "gfo", cls: "text-sky-300 border-sky-400/30 bg-sky-400/10" },
+  vegetarian: { icon: "leaf", cls: "text-emerald-700 border-emerald-500/40 bg-emerald-400/10" },
+  vegan: { icon: "sprout", cls: "text-lime-700 border-lime-400/30 bg-lime-400/10" },
+  spicy: { icon: "chili", cls: "text-red-600 border-red-500/40 bg-red-500/10" },
+  glutenFreeOption: { icon: "gfo", cls: "text-sky-700 border-sky-400/30 bg-sky-400/10" },
 };
 
 export function dietIcon(d: Dietary) {
@@ -39,7 +39,7 @@ export function AllergenIcons({ items, withLabel = false }: { items: Allergen[];
         <li
           key={a}
           title={t.allergens[a]}
-          className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-1.5 py-1 text-[11px] text-cream-muted"
+          className="inline-flex items-center gap-1 rounded-full border border-black/10 bg-black/[0.04] px-1.5 py-1 text-[11px] text-cream-muted"
         >
           <Icon name={a} className="h-3.5 w-3.5 text-ember" />
           {withLabel ? <span className="pr-1">{t.allergens[a]}</span> : <span className="sr-only">{t.allergens[a]}</span>}
